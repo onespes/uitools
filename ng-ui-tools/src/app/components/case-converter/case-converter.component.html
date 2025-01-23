@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="left">
+    <label>Input</label>
+    <input type="text" [(ngModel)]="inputText" />
+
+    <div>
+      <h4>Title Case</h4>
+      <p>{{ inputText() | customTitleCase }}</p>
+      <button [cdkCopyToClipboard]="inputText() | customTitleCase">
+        Copy to clipboard
+      </button>
+
+      <h4>Title Case with Override</h4>
+      <p>{{ inputText() | customTitleCase : overWrittenWords() }}</p>
+      <button
+        [cdkCopyToClipboard]="
+          inputText() | customTitleCase : overWrittenWords()
+        "
+      >
+        Copy to clipboard
+      </button>
+    </div>
+
+    <div>
+      <h4>Sentence case</h4>
+      <p>{{ inputText() | sentenceCase }}</p>
+
+      <h4>Sentence case with override</h4>
+      <p>{{ inputText() | sentenceCase : overWrittenWords() }}</p>
+    </div>
+
+    <div>
+      <h4>Start Case</h4>
+      <p>{{ inputText() | titlecase }}</p>
+      <button [cdkCopyToClipboard]="inputText() | titlecase">
+        Copy to clipboard
+      </button>
+    </div>
+
+    <div>
+      <h4>UPPERCASE</h4>
+      <p>{{ inputText() | uppercase }}</p>
+    </div>
+
+    <div>
+      <h4>lowercase</h4>
+      <p>{{ inputText() | lowercase }}</p>
+    </div>
+  </div>
+  <div class="right">
+    <label>Overrides</label>
+    <textarea name="override" id="override" [(ngModel)]="override"></textarea>
+    {{ overWrittenWords() }}
+  </div>
+</div>
