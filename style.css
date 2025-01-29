@@ -1,11 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 100 to 900 */
 
 *, *:after, *:before {
 	box-sizing: border-box;
 }
 
+
+.hanken-grotesk-header {
+  font-family: "Hanken Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.hanken-grotesk-body {
+  font-family: "Hanken Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
 body {
-	font-family: "Inter", sans-serif;
+	font-family: "Hanken Grotesk", serif;
 	background-color: #f2f5f7;
 }
 
