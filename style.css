@@ -32,6 +32,7 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent grey */
+  border-radius: 10px; /* Optional: Add border radius to track */
 }
 
 /* Thumb */
@@ -79,6 +80,13 @@ scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* thumb color, track co
     border-radius: 4px;
   }
 }
+
+/* Fallback for browsers that do not support custom scrollbar styling */
+body {
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* Default thumb and track color */
+  scrollbar-width: thin; /* Thin scrollbar for older Firefox or browsers that don't support '::-webkit-scrollbar' */
+}
+
 
 
 [data-theme="dark"] {
