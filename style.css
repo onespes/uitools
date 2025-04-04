@@ -22,6 +22,7 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+
 /* WebKit Browsers (Chrome, Safari, Edge) */
 
 /* Scrollbar */
@@ -31,13 +32,13 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent grey */
+  background-color: rgba(0, 0, 0, 0.1); /* Lighter semi-transparent grey */
   border-radius: 10px; /* Optional: Add border radius to track */
 }
 
 /* Thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker grey */
+  background-color: rgba(0, 0, 0, 0.3); /* Lighter dark grey */
   border-radius: 4px; /* Optional: Rounded thumb */
 }
 
@@ -45,7 +46,7 @@
 
 /* General scrollbar styling */
 scrollbar-width: thin; /* Options: 'auto', 'thin', 'none' */
-scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* thumb color, track color */
+scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1); /* thumb color, track color */
 
 /* For browsers that don't support custom scrollbar styling */
 
@@ -56,12 +57,12 @@ scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* thumb color, track co
 
 /* Track for non-WebKit browsers (fallback for Firefox) */
 ::-moz-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Thumb for non-WebKit browsers (fallback for Firefox) */
 ::-moz-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
 
@@ -72,20 +73,21 @@ scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* thumb color, track co
   }
 
   ::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
   }
 }
 
 /* Fallback for browsers that do not support custom scrollbar styling */
 body {
-  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* Default thumb and track color */
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1); /* Default thumb and track color */
   scrollbar-width: thin; /* Thin scrollbar for older Firefox or browsers that don't support '::-webkit-scrollbar' */
 }
+
 
 
 
