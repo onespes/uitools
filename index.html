@@ -1,80 +1,303 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Navbar with tooltip on hover</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="style.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xperience Design UI Documentation Layout</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="py-3 px-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-8">
+          <button class="mobile-menu-btn">
+            <i class="ri-menu-line text-xl"></i>
+          </button>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<nav>
-	<ul>
-		<li>
-			<a href="#">
-				<i class="ai-home"></i>
-				<span>Dashboard</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<i class="ai-image"></i>
-				<span>Images</span>
-			</a>
-		</li>	
-		<li>
-			<a href="#">
-				<i class="ai-file"></i>
-				<span>Files</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<i class="ai-game-controller"></i>
-				<span>Games</span>
-			</a>
-		</li>	
-		<li>
-			<a href="#">
-				<i class="ai-book-open"></i>
-				<span>Books</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<i class="ai-bell"></i>
-				<span>Notifications</span>
-			</a>
-		</li>
-		<li>	
-			<a href="#">
-				<i class="ai-gear"></i>
-				<span>Settings</span>
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<i class="ai-person"></i>
-				<span>Profile</span>
-			</a>
-		</li>
-	</ul>
-</nav>
-<details>
-	<summary>Donate</summary>
-</details>
-<!-- partial -->
-  <script>
-		var head = document.getElementsByTagName("head")[0];
-		var link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.type = "text/css";
-		link.href = "akar-icons.css";
-		head.appendChild(link);
-  </script><script  src="./script.js"></script>
+          <a href="#" class="logo">
+            <i class="ri-code-box-line text-xl text-accent-color"></i>
+            <span>Xperience Design UI</span>
+          </a>
 
-</body>
+          <div class="search-bar hidden md:block">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Search" />
+            <div class="kbd">
+              <span>⌘</span>
+              <span>K</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <nav class="hidden md:block">
+            <ul>
+              <li><a href="#" class="active">Docs</a></li>
+              <li><a href="#">Examples</a></li>
+              <li><a href="#">Showcase</a></li>
+            </ul>
+          </nav>
+
+          <div class="flex items-center gap-2">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              <i class="ri-sun-line theme-toggle-icon theme-toggle-sun"></i>
+              <i
+                class="ri-moon-line theme-toggle-icon theme-toggle-moon"
+                style="display: none"
+              ></i>
+            </button>
+
+            <div class="hidden sm:flex items-center gap-2">
+              <button class="icon-btn">
+                <i class="ri-github-line text-lg"></i>
+              </button>
+              <button class="icon-btn">
+                <i class="ri-discord-line text-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Overview</h3>
+          <ul class="sidebar-links">
+            <li><a href="#" class="sidebar-link active">Introduction</a></li>
+            <li><a href="#" class="sidebar-link">Installation</a></li>
+            <li><a href="#" class="sidebar-link">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Guides</h3>
+          <ul class="sidebar-links">
+            <li>
+              <div class="sidebar-group">
+                <div class="sidebar-group-title">
+                  <span>Getting Started</span>
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+                <div class="sidebar-group-content">
+                  <a href="#" class="sidebar-link">Setup</a>
+                  <a href="#" class="sidebar-link">Styling</a>
+                  <a href="#" class="sidebar-link">Theming</a>
+                </div>
+              </div>
+            </li>
+            <li><a href="#" class="sidebar-link">Accessibility</a></li>
+            <li><a href="#" class="sidebar-link">SSR Support</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Components</h3>
+          <ul class="sidebar-links">
+            <li><a href="#" class="sidebar-link">Accordion</a></li>
+            <li><a href="#" class="sidebar-link">Alert Dialog</a></li>
+            <li><a href="#" class="sidebar-link">Avatar</a></li>
+            <li><a href="#" class="sidebar-link">Button</a></li>
+            <li><a href="#" class="sidebar-link">Checkbox</a></li>
+            <li><a href="#" class="sidebar-link">Dialog</a></li>
+            <li><a href="#" class="sidebar-link">Dropdown Menu</a></li>
+            <li><a href="#" class="sidebar-link">Input</a></li>
+            <li><a href="#" class="sidebar-link">Popover</a></li>
+            <li><a href="#" class="sidebar-link">Tabs</a></li>
+            <li><a href="#" class="sidebar-link">Toast</a></li>
+            <li><a href="#" class="sidebar-link">Tooltip</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="content-wrapper">
+        <main class="content">
+          <div class="breadcrumb">
+            <a href="#">Docs</a>
+            <i class="ri-arrow-right-s-line"></i>
+            <a href="#">Overview</a>
+            <i class="ri-arrow-right-s-line"></i>
+            <span>Introduction</span>
+          </div>
+
+          <h1>Introduction</h1>
+
+          <p>
+            An open-source UI component library for building high-quality,
+            accessible design systems and web apps using Vue.js.
+          </p>
+
+          <h2>Rebrand: Xperience Design UI</h2>
+
+          <p>
+            Presenting Xperience Design UI, the new identity of Radix Vue in its v2
+            evolution.
+          </p>
+
+          <p>
+            Xperience Design (pronounced /ree·kuh/) means "design" in Malay, and also evokes
+            "EuXperience Design."
+          </p>
+
+          <p>
+            Xperience Design UI strives to deliver a low-level UI component library centered
+            on accessibility, customization, and developer experience. Use these
+            components as the foundation of your design system or integrate them
+            progressively.
+          </p>
+
+          <h2>Our Principles</h2>
+
+          <h3>Accessibility-First</h3>
+
+          <p>
+            Accessibility is at the heart of Xperience Design UI. Our components align with
+            WAI-ARIA design patterns to ensure that all users, regardless of
+            abilities, can interact with your UI effectively. We handle
+            intricate accessibility details like aria attributes, keyboard
+            navigation, and focus management to simplify the developer's work.
+          </p>
+
+          <h3>Customizable & Unstyled</h3>
+
+          <p>
+            Xperience Design UI components come unstyled, providing developers the freedom
+            to style them however they choose, using any CSS solution (vanilla
+            CSS, preprocessors, or CSS-in-JS libraries). Our open component
+            architecture allows you to wrap, extend, or modify each component as
+            needed.
+          </p>
+
+          <h3>Open & Modular</h3>
+
+          <p>
+            Our components are designed to be open and adaptable, allowing you
+            to customize each element to fit your needs. Whether adding event
+            listeners, props, or refs, Xperience Design UI provides granular access to each
+            component's inner workings.
+          </p>
+        </main>
+
+        <aside class="toc">
+          <h2 class="toc-title">On this page</h2>
+          <ul class="toc-links">
+            <li>
+              <a href="#introduction" class="toc-link active">Introduction</a>
+            </li>
+            <li>
+              <a href="#rebrand-Xperience Design-ui" class="toc-link">Rebrand: Xperience Design UI</a>
+            </li>
+            <li>
+              <a href="#our-principles" class="toc-link">Our Principles</a>
+            </li>
+            <li>
+              <a href="#accessibility-first" class="toc-link"
+                >Accessibility-First</a
+              >
+            </li>
+            <li>
+              <a href="#customizable-unstyled" class="toc-link"
+                >Customizable & Unstyled</a
+              >
+            </li>
+            <li><a href="#open-modular" class="toc-link">Open & Modular</a></li>
+            <li>
+              <a href="#flexible-state-management" class="toc-link"
+                >Flexible State Management</a
+              >
+            </li>
+            <li>
+              <a href="#developer-centric-experience" class="toc-link"
+                >Developer-Centric Experience</a
+              >
+            </li>
+            <li>
+              <a href="#performance-tree-shaking" class="toc-link"
+                >Performance & Tree-Shaking</a
+              >
+            </li>
+          </ul>
+
+          <div class="community-section">
+            <p>Join our community</p>
+            <div class="community-links">
+              <a href="#"><i class="ri-github-fill"></i></a>
+              <a href="#"><i class="ri-discord-fill"></i></a>
+              <a href="#"><i class="ri-twitter-fill"></i></a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      // Theme toggling functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("theme-toggle");
+        const prefersDarkScheme = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        );
+
+        // Get saved theme from localStorage or use system preference
+        const savedTheme =
+          localStorage.getItem("theme") ||
+          (prefersDarkScheme.matches ? "dark" : "light");
+
+        // Set initial theme
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener("click", () => {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+          updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+          const sunIcon = document.querySelector(".theme-toggle-sun");
+          const moonIcon = document.querySelector(".theme-toggle-moon");
+
+          if (theme === "dark") {
+            sunIcon.style.display = "none";
+            moonIcon.style.display = "block";
+          } else {
+            sunIcon.style.display = "block";
+            moonIcon.style.display = "none";
+          }
+        }
+      });
+
+      // Simple sidebar toggle functionality
+      document
+        .querySelector(".sidebar-group-title")
+        .addEventListener("click", function () {
+          const content = this.nextElementSibling;
+          content.style.display =
+            content.style.display === "none" ? "block" : "none";
+        });
+    </script>
+  </body>
 </html>
