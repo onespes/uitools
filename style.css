@@ -21,6 +21,21 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent grey */
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker grey */
+  border-radius: 4px; /* Optional: Rounded thumb */
+}
 
 [data-theme="dark"] {
   --bg-primary: #0f0f0f;
