@@ -21,6 +21,9 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
+
+/* WebKit Browsers (Chrome, Safari, Edge) */
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px; /* Adjust as needed */
@@ -36,6 +39,47 @@
   background-color: rgba(0, 0, 0, 0.5); /* Slightly darker grey */
   border-radius: 4px; /* Optional: Rounded thumb */
 }
+
+/* Firefox */
+
+/* General scrollbar styling */
+scrollbar-width: thin; /* Options: 'auto', 'thin', 'none' */
+scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.3); /* thumb color, track color */
+
+/* For browsers that don't support custom scrollbar styling */
+
+/* Standard fallback for non-WebKit browsers (like older Firefox or Opera) */
+::-moz-scrollbar {
+  width: 8px;
+}
+
+/* Track for non-WebKit browsers (fallback for Firefox) */
+::-moz-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Thumb for non-WebKit browsers (fallback for Firefox) */
+::-moz-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* Opera (pre-Chromium, for legacy compatibility) */
+@supports (-webkit-overflow-scrolling: touch) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+  }
+}
+
 
 [data-theme="dark"] {
   --bg-primary: #0f0f0f;
