@@ -120,62 +120,298 @@
             <span>Introduction</span>
           </div>
 
-          <h1>Introduction</h1>
-
-          <p>
-            An open-source UI component library for building high-quality,
-            accessible design systems and web apps using Vue.js.
-          </p>
-
-          <h2>Rebrand: Xperience Design UI</h2>
-
-          <p>
-            Presenting Xperience Design UI, the new identity of Radix Vue in its v2
-            evolution.
-          </p>
-
-          <p>
-            Xperience Design (pronounced /ree·kuh/) means "design" in Malay, and also evokes
-            "EuXperience Design."
-          </p>
-
-          <p>
-            Xperience Design UI strives to deliver a low-level UI component library centered
-            on accessibility, customization, and developer experience. Use these
-            components as the foundation of your design system or integrate them
-            progressively.
-          </p>
-
-          <h2>Our Principles</h2>
-
-          <h3>Accessibility-First</h3>
-
-          <p>
-            Accessibility is at the heart of Xperience Design UI. Our components align with
-            WAI-ARIA design patterns to ensure that all users, regardless of
-            abilities, can interact with your UI effectively. We handle
-            intricate accessibility details like aria attributes, keyboard
-            navigation, and focus management to simplify the developer's work.
-          </p>
-
-          <h3>Customizable & Unstyled</h3>
-
-          <p>
-            Xperience Design UI components come unstyled, providing developers the freedom
-            to style them however they choose, using any CSS solution (vanilla
-            CSS, preprocessors, or CSS-in-JS libraries). Our open component
-            architecture allows you to wrap, extend, or modify each component as
-            needed.
-          </p>
-
-          <h3>Open & Modular</h3>
-
-          <p>
-            Our components are designed to be open and adaptable, allowing you
-            to customize each element to fit your needs. Whether adding event
-            listeners, props, or refs, Xperience Design UI provides granular access to each
-            component's inner workings.
-          </p>
+          
+          <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-indigo-600 px-6 py-4 text-white">
+                <h1 class="text-2xl font-bold">Advanced Text Case Converter</h1>
+                <p class="text-indigo-200">Transforms your text into different cases in real-time</p>
+            </div>
+            
+            <div class="p-6">
+                <div class="mb-6">
+                    <label for="input-text" class="block text-lg font-medium text-gray-700 mb-2">Input Text</label>
+                    <textarea id="input-text" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-32" placeholder="Type or paste your text here..."></textarea>
+                    <div class="mt-2 text-sm text-gray-500">
+                        <span id="character-count">0</span> characters | <span id="word-count">0</span> words
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Title Case -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h2 class="text-lg font-medium text-gray-800">Title Case</h2>
+                            <button id="copy-title-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
+                            <input type="text" id="title-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="a, an, the, and, but, or, for, nor, as, at, by, from, in, into, near, of, on, onto, to, with, upon">
+                        </div>
+                        <textarea id="title-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
+                    </div>
+                    
+                    <!-- Sentence Case -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h2 class="text-lg font-medium text-gray-800">Sentence Case</h2>
+                            <button id="copy-sentence-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to preserve (comma separated)</label>
+                            <input type="text" id="sentence-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="I, I'm, I've, I'll, I'd, iPhone, iPad, iOS, macOS, NASA, FBI, CIA, USA, UK, EU">
+                        </div>
+                        <textarea id="sentence-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
+                    </div>
+                    
+                    <!-- Upper Case -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h2 class="text-lg font-medium text-gray-800">Upper Case</h2>
+                            <button id="copy-upper-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
+                            <input type="text" id="upper-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="pH, iOS, mRNA, pH">
+                        </div>
+                        <textarea id="upper-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
+                    </div>
+                    
+                    <!-- Lower Case -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h2 class="text-lg font-medium text-gray-800">Lower Case</h2>
+                            <button id="copy-lower-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
+                            <input type="text" id="lower-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="NASA, FBI, CIA, USA, UK, EU, HTML, CSS, PHP, SQL, JSON">
+                        </div>
+                        <textarea id="lower-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 text-sm text-gray-600">
+                <p>Text is processed entirely in your browser and is not sent to any server. Your privacy is maintained.</p>
+            </div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const inputText = document.getElementById('input-text');
+                const titleCaseOutput = document.getElementById('title-case-output');
+                const sentenceCaseOutput = document.getElementById('sentence-case-output');
+                const upperCaseOutput = document.getElementById('upper-case-output');
+                const lowerCaseOutput = document.getElementById('lower-case-output');
+                
+                const titleCaseExclude = document.getElementById('title-case-exclude');
+                const sentenceCaseExclude = document.getElementById('sentence-case-exclude');
+                const upperCaseExclude = document.getElementById('upper-case-exclude');
+                const lowerCaseExclude = document.getElementById('lower-case-exclude');
+                
+                const characterCount = document.getElementById('character-count');
+                const wordCount = document.getElementById('word-count');
+                
+                // Setup copy buttons
+                setupCopyButton('copy-title-case', 'title-case-output');
+                setupCopyButton('copy-sentence-case', 'sentence-case-output');
+                setupCopyButton('copy-upper-case', 'upper-case-output');
+                setupCopyButton('copy-lower-case', 'lower-case-output');
+                
+                // Update all transformations when input changes
+                function updateTransformations() {
+                    const text = inputText.value;
+                    
+                    // Update character and word counts
+                    characterCount.textContent = text.length;
+                    wordCount.textContent = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                    
+                    // Update all case transformations
+                    titleCaseOutput.value = transformTitleCase(text, getExcludeWords(titleCaseExclude.value));
+                    sentenceCaseOutput.value = transformSentenceCase(text, getExcludeWords(sentenceCaseExclude.value));
+                    upperCaseOutput.value = transformUpperCase(text, getExcludeWords(upperCaseExclude.value));
+                    lowerCaseOutput.value = transformLowerCase(text, getExcludeWords(lowerCaseExclude.value));
+                }
+                
+                // Helper function to get exclude words as an array
+                function getExcludeWords(input) {
+                    return input.split(',')
+                        .map(word => word.trim())
+                        .filter(word => word.length > 0);
+                }
+                
+                // Title Case Transformation
+                function transformTitleCase(text, excludeWords) {
+                    if (!text) return '';
+                    
+                    const excludeWordsLower = excludeWords.map(word => word.toLowerCase());
+                    
+                    return text.split(/\b/)
+                        .map(word => {
+                            if (word.trim() === '') return word;
+                            
+                            const lowerWord = word.toLowerCase();
+                            if (excludeWordsLower.includes(lowerWord)) {
+                                return word; // keep original case for excluded words
+                            }
+                            
+                            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                        })
+                        .join('');
+                }
+                
+                // Sentence Case Transformation
+                function transformSentenceCase(text, preserveWords) {
+                    if (!text) return '';
+                    
+                    // Create a map for quick lookup of preserve words
+                    const preserveWordsMap = {};
+                    preserveWords.forEach(word => {
+                        preserveWordsMap[word.toLowerCase()] = word;
+                    });
+                    
+                    // First, convert everything to lowercase
+                    let result = text.toLowerCase();
+                    
+                    // Replace preserved words with their correct casing
+                    Object.keys(preserveWordsMap).forEach(lowerWord => {
+                        const correctWord = preserveWordsMap[lowerWord];
+                        const regex = new RegExp(`\\b${lowerWord}\\b`, 'gi');
+                        result = result.replace(regex, correctWord);
+                    });
+                    
+                    // Capitalize the first letter of each sentence
+                    return result.replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => {
+                        return p1 + p2.toUpperCase();
+                    });
+                }
+                
+                // Upper Case Transformation
+                function transformUpperCase(text, excludeWords) {
+                    if (!text) return '';
+                    
+                    // If no exclude words, just return all uppercase
+                    if (excludeWords.length === 0) {
+                        return text.toUpperCase();
+                    }
+                    
+                    // Create regex to match exact words to exclude
+                    const pattern = new RegExp(`\\b(${excludeWords.join('|')})\\b`, 'g');
+                    
+                    // Store matches and their positions
+                    const matches = [];
+                    let match;
+                    while ((match = pattern.exec(text)) !== null) {
+                        matches.push({
+                            word: match[0],
+                            index: match.index,
+                            length: match[0].length
+                        });
+                    }
+                    
+                    // Convert to uppercase
+                    let result = text.toUpperCase();
+                    
+                    // Replace excluded words with their original case
+                    // Iterate backwards to avoid changing indices
+                    for (let i = matches.length - 1; i >= 0; i--) {
+                        const m = matches[i];
+                        result = result.substring(0, m.index) + 
+                                 text.substring(m.index, m.index + m.length) + 
+                                 result.substring(m.index + m.length);
+                    }
+                    
+                    return result;
+                }
+                
+                // Lower Case Transformation
+                function transformLowerCase(text, excludeWords) {
+                    if (!text) return '';
+                    
+                    // If no exclude words, just return all lowercase
+                    if (excludeWords.length === 0) {
+                        return text.toLowerCase();
+                    }
+                    
+                    // Create regex to match exact words to exclude (case insensitive)
+                    const pattern = new RegExp(`\\b(${excludeWords.join('|')})\\b`, 'gi');
+                    
+                    // Store matches and their positions
+                    const matches = [];
+                    let match;
+                    const textLower = text.toLowerCase();
+                    
+                    while ((match = pattern.exec(text)) !== null) {
+                        const matchedWord = match[0];
+                        const lowerMatchedWord = matchedWord.toLowerCase();
+                        
+                        // Find the corresponding word in the exclude list
+                        const correctCase = excludeWords.find(word => word.toLowerCase() === lowerMatchedWord);
+                        
+                        if (correctCase) {
+                            matches.push({
+                                word: correctCase,
+                                index: match.index,
+                                length: matchedWord.length
+                            });
+                        }
+                    }
+                    
+                    // Convert to lowercase
+                    let result = text.toLowerCase();
+                    
+                    // Replace excluded words with their correct case
+                    // Iterate backwards to avoid changing indices
+                    for (let i = matches.length - 1; i >= 0; i--) {
+                        const m = matches[i];
+                        result = result.substring(0, m.index) + 
+                                 m.word + 
+                                 result.substring(m.index + m.length);
+                    }
+                    
+                    return result;
+                }
+                
+                // Setup copy button functionality
+                function setupCopyButton(buttonId, textareaId) {
+                    const button = document.getElementById(buttonId);
+                    const textarea = document.getElementById(textareaId);
+                    
+                    button.addEventListener('click', function() {
+                        textarea.select();
+                        document.execCommand('copy');
+                        
+                        // Show feedback
+                        const originalContent = button.innerHTML;
+                        button.innerHTML = '<i class="fas fa-check"></i>';
+                        button.classList.add('text-green-500');
+                        
+                        setTimeout(() => {
+                            button.innerHTML = originalContent;
+                            button.classList.remove('text-green-500');
+                        }, 1500);
+                    });
+                }
+                
+                // Add event listeners
+                inputText.addEventListener('input', updateTransformations);
+                titleCaseExclude.addEventListener('input', updateTransformations);
+                sentenceCaseExclude.addEventListener('input', updateTransformations);
+                upperCaseExclude.addEventListener('input', updateTransformations);
+                lowerCaseExclude.addEventListener('input', updateTransformations);
+                
+                // Initial update
+                updateTransformations();
+            });
+        </script>
         </main>
 
         <aside class="toc">
