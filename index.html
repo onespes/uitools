@@ -120,298 +120,288 @@
             <span>Introduction</span>
           </div>
 
-          
-          <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="bg-indigo-600 px-6 py-4 text-white">
-                <h1 class="text-2xl font-bold">Advanced Text Case Converter</h1>
-                <p class="text-indigo-200">Transforms your text into different cases in real-time</p>
+          <header class="py-4 px-6 flex items-center justify-between">
+            <div class="logo">
+                <i class="fas fa-font text-xl"></i>
+                <span>Text Case Converter</span>
             </div>
+            <button id="theme-toggle" class="theme-toggle">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+        </header>
+    
+        <div class="content">
+            <h1>Text Case Converter</h1>
+            <p>Type or paste your text below to see it transformed into different case formats in real-time.</p>
             
-            <div class="p-6">
-                <div class="mb-6">
-                    <label for="input-text" class="block text-lg font-medium text-gray-700 mb-2">Input Text</label>
-                    <textarea id="input-text" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-32" placeholder="Type or paste your text here..."></textarea>
-                    <div class="mt-2 text-sm text-gray-500">
-                        <span id="character-count">0</span> characters | <span id="word-count">0</span> words
-                    </div>
-                </div>
+            <div class="mb-6">
+                <label for="input-text">Input Text</label>
+                <textarea id="input-text" rows="5" placeholder="Enter your text here..."></textarea>
+                <div class="stats" id="input-stats"></div>
+            </div>
+    
+            <!-- Title Case -->
+            <div class="case-container">
+                <h2 class="flex justify-between items-center">
+                    Title Case
+                    <button class="copy-btn secondary" data-target="title-case-output">
+                        <i class="far fa-copy mr-1"></i> Copy
+                    </button>
+                </h2>
+                <div id="title-case-output" class="output-text"></div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Title Case -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-center mb-2">
-                            <h2 class="text-lg font-medium text-gray-800">Title Case</h2>
-                            <button id="copy-title-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
-                            <input type="text" id="title-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="a, an, the, and, but, or, for, nor, as, at, by, from, in, into, near, of, on, onto, to, with, upon">
-                        </div>
-                        <textarea id="title-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
-                    </div>
-                    
-                    <!-- Sentence Case -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-center mb-2">
-                            <h2 class="text-lg font-medium text-gray-800">Sentence Case</h2>
-                            <button id="copy-sentence-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to preserve (comma separated)</label>
-                            <input type="text" id="sentence-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="I, I'm, I've, I'll, I'd, iPhone, iPad, iOS, macOS, NASA, FBI, CIA, USA, UK, EU">
-                        </div>
-                        <textarea id="sentence-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
-                    </div>
-                    
-                    <!-- Upper Case -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-center mb-2">
-                            <h2 class="text-lg font-medium text-gray-800">Upper Case</h2>
-                            <button id="copy-upper-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
-                            <input type="text" id="upper-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="pH, iOS, mRNA, pH">
-                        </div>
-                        <textarea id="upper-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
-                    </div>
-                    
-                    <!-- Lower Case -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-center mb-2">
-                            <h2 class="text-lg font-medium text-gray-800">Lower Case</h2>
-                            <button id="copy-lower-case" class="text-indigo-600 hover:text-indigo-800 focus:outline-none" title="Copy to clipboard">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="mb-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Words to exclude (comma separated)</label>
-                            <input type="text" id="lower-case-exclude" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" value="NASA, FBI, CIA, USA, UK, EU, HTML, CSS, PHP, SQL, JSON">
-                        </div>
-                        <textarea id="lower-case-output" class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white h-28 focus:outline-none" readonly></textarea>
-                    </div>
-                </div>
+                <label for="title-case-excludes">Words to exclude (comma-separated)</label>
+                <textarea id="title-case-excludes" rows="2" placeholder="Words to keep in their original case...">a, an, and, as, at, but, by, for, in, nor, of, on, or, so, the, to, up, yet</textarea>
             </div>
-            
-            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 text-sm text-gray-600">
-                <p>Text is processed entirely in your browser and is not sent to any server. Your privacy is maintained.</p>
+    
+            <!-- Sentence Case -->
+            <div class="case-container">
+                <h2 class="flex justify-between items-center">
+                    Sentence Case
+                    <button class="copy-btn secondary" data-target="sentence-case-output">
+                        <i class="far fa-copy mr-1"></i> Copy
+                    </button>
+                </h2>
+                <div id="sentence-case-output" class="output-text"></div>
+                
+                <label for="sentence-case-excludes">Words to exclude (comma-separated)</label>
+                <textarea id="sentence-case-excludes" rows="2" placeholder="Words to keep in their original case...">I, Mr, Mrs, Dr, Ms, Jr, Sr, USA, UK, EU, UN</textarea>
+            </div>
+    
+            <!-- Upper Case -->
+            <div class="case-container">
+                <h2 class="flex justify-between items-center">
+                    Upper Case
+                    <button class="copy-btn secondary" data-target="upper-case-output">
+                        <i class="far fa-copy mr-1"></i> Copy
+                    </button>
+                </h2>
+                <div id="upper-case-output" class="output-text"></div>
+                
+                <label for="upper-case-excludes">Words to exclude (comma-separated)</label>
+                <textarea id="upper-case-excludes" rows="2" placeholder="Words to keep in their original case...">PhD, iOS, iPhone, macOS, NASA, SQL</textarea>
+            </div>
+    
+            <!-- Lower Case -->
+            <div class="case-container">
+                <h2 class="flex justify-between items-center">
+                    Lower Case
+                    <button class="copy-btn secondary" data-target="lower-case-output">
+                        <i class="far fa-copy mr-1"></i> Copy
+                    </button>
+                </h2>
+                <div id="lower-case-output" class="output-text"></div>
+                
+                <label for="lower-case-excludes">Words to exclude (comma-separated)</label>
+                <textarea id="lower-case-excludes" rows="2" placeholder="Words to keep in their original case...">iOS, pH, mRNA, dB</textarea>
             </div>
         </div>
     
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const inputText = document.getElementById('input-text');
-                const titleCaseOutput = document.getElementById('title-case-output');
-                const sentenceCaseOutput = document.getElementById('sentence-case-output');
-                const upperCaseOutput = document.getElementById('upper-case-output');
-                const lowerCaseOutput = document.getElementById('lower-case-output');
+            // Text transformation functionality
+            const inputText = document.getElementById('input-text');
+            const inputStats = document.getElementById('input-stats');
+            
+            const titleCaseOutput = document.getElementById('title-case-output');
+            const titleCaseExcludes = document.getElementById('title-case-excludes');
+            
+            const sentenceCaseOutput = document.getElementById('sentence-case-output');
+            const sentenceCaseExcludes = document.getElementById('sentence-case-excludes');
+            
+            const upperCaseOutput = document.getElementById('upper-case-output');
+            const upperCaseExcludes = document.getElementById('upper-case-excludes');
+            
+            const lowerCaseOutput = document.getElementById('lower-case-output');
+            const lowerCaseExcludes = document.getElementById('lower-case-excludes');
+    
+            // Copy buttons
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            // Transform text function
+            function transformText() {
+                const text = inputText.value;
                 
-                const titleCaseExclude = document.getElementById('title-case-exclude');
-                const sentenceCaseExclude = document.getElementById('sentence-case-exclude');
-                const upperCaseExclude = document.getElementById('upper-case-exclude');
-                const lowerCaseExclude = document.getElementById('lower-case-exclude');
+                // Update stats
+                const charCount = text.length;
+                const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                inputStats.textContent = `${charCount} characters, ${wordCount} words`;
                 
-                const characterCount = document.getElementById('character-count');
-                const wordCount = document.getElementById('word-count');
-                
-                // Setup copy buttons
-                setupCopyButton('copy-title-case', 'title-case-output');
-                setupCopyButton('copy-sentence-case', 'sentence-case-output');
-                setupCopyButton('copy-upper-case', 'upper-case-output');
-                setupCopyButton('copy-lower-case', 'lower-case-output');
-                
-                // Update all transformations when input changes
-                function updateTransformations() {
-                    const text = inputText.value;
-                    
-                    // Update character and word counts
-                    characterCount.textContent = text.length;
-                    wordCount.textContent = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-                    
-                    // Update all case transformations
-                    titleCaseOutput.value = transformTitleCase(text, getExcludeWords(titleCaseExclude.value));
-                    sentenceCaseOutput.value = transformSentenceCase(text, getExcludeWords(sentenceCaseExclude.value));
-                    upperCaseOutput.value = transformUpperCase(text, getExcludeWords(upperCaseExclude.value));
-                    lowerCaseOutput.value = transformLowerCase(text, getExcludeWords(lowerCaseExclude.value));
+                // Apply transformations
+                applyTitleCase(text);
+                applySentenceCase(text);
+                applyUpperCase(text);
+                applyLowerCase(text);
+            }
+            
+            // Title Case
+            function applyTitleCase(text) {
+                if (!text) {
+                    titleCaseOutput.textContent = '';
+                    return;
                 }
                 
-                // Helper function to get exclude words as an array
-                function getExcludeWords(input) {
-                    return input.split(',')
-                        .map(word => word.trim())
-                        .filter(word => word.length > 0);
-                }
+                const excludedWords = parseExcludedWords(titleCaseExcludes.value);
+                const words = text.split(/\b/);
                 
-                // Title Case Transformation
-                function transformTitleCase(text, excludeWords) {
-                    if (!text) return '';
+                const result = words.map(word => {
+                    if (!word.trim()) return word;
                     
-                    const excludeWordsLower = excludeWords.map(word => word.toLowerCase());
-                    
-                    return text.split(/\b/)
-                        .map(word => {
-                            if (word.trim() === '') return word;
-                            
-                            const lowerWord = word.toLowerCase();
-                            if (excludeWordsLower.includes(lowerWord)) {
-                                return word; // keep original case for excluded words
-                            }
-                            
-                            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-                        })
-                        .join('');
-                }
-                
-                // Sentence Case Transformation
-                function transformSentenceCase(text, preserveWords) {
-                    if (!text) return '';
-                    
-                    // Create a map for quick lookup of preserve words
-                    const preserveWordsMap = {};
-                    preserveWords.forEach(word => {
-                        preserveWordsMap[word.toLowerCase()] = word;
-                    });
-                    
-                    // First, convert everything to lowercase
-                    let result = text.toLowerCase();
-                    
-                    // Replace preserved words with their correct casing
-                    Object.keys(preserveWordsMap).forEach(lowerWord => {
-                        const correctWord = preserveWordsMap[lowerWord];
-                        const regex = new RegExp(`\\b${lowerWord}\\b`, 'gi');
-                        result = result.replace(regex, correctWord);
-                    });
-                    
-                    // Capitalize the first letter of each sentence
-                    return result.replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => {
-                        return p1 + p2.toUpperCase();
-                    });
-                }
-                
-                // Upper Case Transformation
-                function transformUpperCase(text, excludeWords) {
-                    if (!text) return '';
-                    
-                    // If no exclude words, just return all uppercase
-                    if (excludeWords.length === 0) {
-                        return text.toUpperCase();
+                    // Check if the word should be excluded from transformation
+                    if (excludedWords.has(word.toLowerCase())) {
+                        return word;
                     }
                     
-                    // Create regex to match exact words to exclude
-                    const pattern = new RegExp(`\\b(${excludeWords.join('|')})\\b`, 'g');
-                    
-                    // Store matches and their positions
-                    const matches = [];
+                    // For normal words, capitalize the first letter
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }).join('');
+                
+                titleCaseOutput.textContent = result;
+            }
+            
+            // Sentence Case
+            function applySentenceCase(text) {
+                if (!text) {
+                    sentenceCaseOutput.textContent = '';
+                    return;
+                }
+                
+                const excludedWords = parseExcludedWords(sentenceCaseExcludes.value);
+                
+                // First, lowercase everything
+                let result = text.toLowerCase();
+                
+                // Then capitalize the first letter of each sentence
+                result = result.replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => {
+                    return p1 + p2.toUpperCase();
+                });
+                
+                // Restore excluded words
+                excludedWords.forEach(word => {
+                    const regex = new RegExp(`\\b${word.toLowerCase()}\\b`, 'gi');
+                    result = result.replace(regex, word);
+                });
+                
+                sentenceCaseOutput.textContent = result;
+            }
+            
+            // Upper Case
+            function applyUpperCase(text) {
+                if (!text) {
+                    upperCaseOutput.textContent = '';
+                    return;
+                }
+                
+                const excludedWords = parseExcludedWords(upperCaseExcludes.value);
+                
+                // Store excluded words with their positions
+                const excludedPositions = [];
+                let tempText = text;
+                
+                excludedWords.forEach(word => {
+                    const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, 'g');
                     let match;
-                    while ((match = pattern.exec(text)) !== null) {
-                        matches.push({
-                            word: match[0],
-                            index: match.index,
-                            length: match[0].length
+                    while ((match = regex.exec(tempText)) !== null) {
+                        excludedPositions.push({
+                            start: match.index,
+                            end: match.index + word.length,
+                            word: word
                         });
                     }
-                    
-                    // Convert to uppercase
-                    let result = text.toUpperCase();
-                    
-                    // Replace excluded words with their original case
-                    // Iterate backwards to avoid changing indices
-                    for (let i = matches.length - 1; i >= 0; i--) {
-                        const m = matches[i];
-                        result = result.substring(0, m.index) + 
-                                 text.substring(m.index, m.index + m.length) + 
-                                 result.substring(m.index + m.length);
-                    }
-                    
-                    return result;
+                });
+                
+                // Convert to uppercase
+                let result = text.toUpperCase();
+                
+                // Restore excluded words (starting from the end to maintain positions)
+                excludedPositions.sort((a, b) => b.start - a.start);
+                excludedPositions.forEach(pos => {
+                    result = result.substring(0, pos.start) + pos.word + result.substring(pos.end);
+                });
+                
+                upperCaseOutput.textContent = result;
+            }
+            
+            // Lower Case
+            function applyLowerCase(text) {
+                if (!text) {
+                    lowerCaseOutput.textContent = '';
+                    return;
                 }
                 
-                // Lower Case Transformation
-                function transformLowerCase(text, excludeWords) {
-                    if (!text) return '';
-                    
-                    // If no exclude words, just return all lowercase
-                    if (excludeWords.length === 0) {
-                        return text.toLowerCase();
-                    }
-                    
-                    // Create regex to match exact words to exclude (case insensitive)
-                    const pattern = new RegExp(`\\b(${excludeWords.join('|')})\\b`, 'gi');
-                    
-                    // Store matches and their positions
-                    const matches = [];
+                const excludedWords = parseExcludedWords(lowerCaseExcludes.value);
+                
+                // Store excluded words with their positions
+                const excludedPositions = [];
+                let tempText = text;
+                
+                excludedWords.forEach(word => {
+                    const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, 'g');
                     let match;
-                    const textLower = text.toLowerCase();
-                    
-                    while ((match = pattern.exec(text)) !== null) {
-                        const matchedWord = match[0];
-                        const lowerMatchedWord = matchedWord.toLowerCase();
-                        
-                        // Find the corresponding word in the exclude list
-                        const correctCase = excludeWords.find(word => word.toLowerCase() === lowerMatchedWord);
-                        
-                        if (correctCase) {
-                            matches.push({
-                                word: correctCase,
-                                index: match.index,
-                                length: matchedWord.length
-                            });
-                        }
+                    while ((match = regex.exec(tempText)) !== null) {
+                        excludedPositions.push({
+                            start: match.index,
+                            end: match.index + word.length,
+                            word: word
+                        });
                     }
-                    
-                    // Convert to lowercase
-                    let result = text.toLowerCase();
-                    
-                    // Replace excluded words with their correct case
-                    // Iterate backwards to avoid changing indices
-                    for (let i = matches.length - 1; i >= 0; i--) {
-                        const m = matches[i];
-                        result = result.substring(0, m.index) + 
-                                 m.word + 
-                                 result.substring(m.index + m.length);
-                    }
-                    
-                    return result;
-                }
+                });
                 
-                // Setup copy button functionality
-                function setupCopyButton(buttonId, textareaId) {
-                    const button = document.getElementById(buttonId);
-                    const textarea = document.getElementById(textareaId);
+                // Convert to lowercase
+                let result = text.toLowerCase();
+                
+                // Restore excluded words (starting from the end to maintain positions)
+                excludedPositions.sort((a, b) => b.start - a.start);
+                excludedPositions.forEach(pos => {
+                    result = result.substring(0, pos.start) + pos.word + result.substring(pos.end);
+                });
+                
+                lowerCaseOutput.textContent = result;
+            }
+            
+            // Parse excluded words into a Set for faster lookups
+            function parseExcludedWords(excludesText) {
+                if (!excludesText.trim()) return new Set();
+                
+                return new Set(
+                    excludesText
+                        .split(',')
+                        .map(word => word.trim())
+                        .filter(word => word !== '')
+                );
+            }
+            
+            // Escape special characters in strings for regex
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            // Copy functionality
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const textToCopy = document.getElementById(targetId).textContent;
                     
-                    button.addEventListener('click', function() {
-                        textarea.select();
-                        document.execCommand('copy');
-                        
-                        // Show feedback
-                        const originalContent = button.innerHTML;
-                        button.innerHTML = '<i class="fas fa-check"></i>';
-                        button.classList.add('text-green-500');
-                        
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check mr-1"></i> Copied!';
                         setTimeout(() => {
-                            button.innerHTML = originalContent;
-                            button.classList.remove('text-green-500');
-                        }, 1500);
+                            this.innerHTML = originalText;
+                        }, 2000);
                     });
-                }
-                
-                // Add event listeners
-                inputText.addEventListener('input', updateTransformations);
-                titleCaseExclude.addEventListener('input', updateTransformations);
-                sentenceCaseExclude.addEventListener('input', updateTransformations);
-                upperCaseExclude.addEventListener('input', updateTransformations);
-                lowerCaseExclude.addEventListener('input', updateTransformations);
-                
-                // Initial update
-                updateTransformations();
+                });
             });
+            
+            // Event listeners
+            inputText.addEventListener('input', transformText);
+            titleCaseExcludes.addEventListener('input', transformText);
+            sentenceCaseExcludes.addEventListener('input', transformText);
+            upperCaseExcludes.addEventListener('input', transformText);
+            lowerCaseExcludes.addEventListener('input', transformText);
+            
+            // Initial transformation (if there's any default text)
+            transformText();
         </script>
+          
         </main>
 
         <aside class="toc">
