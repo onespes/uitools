@@ -50,7 +50,7 @@ body {
 }
 
 [data-theme="dark"] {
-  --bg-primary: #0f0f0f;
+  --bg-primary: #1d1d1d;
   --bg-secondary: #161616;
   --bg-tertiary: #1e1e1e;
   --text-primary: #ffffff;
@@ -59,7 +59,7 @@ body {
   --border-color: #333333;
   --accent-color: #10b981;
   --accent-hover: #059669;
-  --header-bg: rgba(15, 15, 15, 0.8);
+  --header-bg: rgba(29, 29, 29, 0.8);
   --code-bg: #1e1e1e;
   --sidebar-active: rgba(16, 185, 129, 0.2);
   --sidebar-hover: rgba(255, 255, 255, 0.05);
