@@ -1,0 +1,148 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background-color: #1a1a1a;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.donate-btn {
+    background-color: transparent;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.donate-btn:hover {
+    background-color: #333;
+}
+
+/* Container for the main layout */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Left Navigation Styles */
+.left-nav {
+    width: 60px;
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+    position: relative;
+}
+
+.left-nav ul {
+    list-style: none;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.left-nav li {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.left-nav li i {
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.left-nav li:hover i,
+.left-nav li.active i {
+    color: #4d90fe;
+}
+
+.left-nav li .tooltip {
+    position: absolute;
+    left: 70px;
+    background-color: #333;
+    padding: 6px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+}
+
+.left-nav li:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Content Area Styles */
+.content {
+    flex: 1;
+    padding: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrollable-content {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 12px; /* Give some space for the scrollbar */
+}
+
+/* Right Side Styles (for balance) */
+.right-side {
+    width: 60px;
+    background-color: #1a1a1a;
+    border-left: 1px solid #333;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1a1a1a;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #333;
+}
+
+/* Custom Scrollbar */
+.scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated circle-one with Smooth Fading trail-one</title>
+    <style>
+        .dot-one {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            transform: rotate(45deg);
+        }
+
+        .circle-one, .trail-one {
+            position: absolute;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: #EA32CA;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .trail-one {
+            background-color: rgba(234, 136, 215, 0.7);
+        }
+
+        .trail-one:nth-child(2) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.01s;
+        }
+
+        .trail-one:nth-child(3) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.02s;
+        }
+
+        .trail-one:nth-child(4) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.03s;
+        }
+
+        .trail-one:nth-child(5) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.04s;
+        }
+
+        .trail-one:nth-child(6) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.05s;
+        }
+
+        .trail-one:nth-child(7) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.06s;
+        }
+
+        .trail-one:nth-child(8) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.07s;
+        }
+
+        .trail-one:nth-child(9) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.08s;
+        }
+
+        .trail-one:nth-child(10) {
+            animation: trail-one 1.05s ease-in-out infinite;
+            opacity: 0.025;
+            animation-delay: 0.09s;
+        }
+
+        @keyframes move {
+            0%, 100% { left: 0; }
+            50% { left: calc(100% - 10px); }
+        }
+
+        @keyframes trail-one {
+            0%, 100% { left: 0; opacity: 0; }
+            10% { opacity: 0.005; }
+            20%, 80% { opacity: 0.4; }
+            50% { left: calc(100% - 10px); opacity: 0.5;}
+        }
+
+        .circle-one {
+            animation: move 1.05s ease-in-out infinite;
+        }
+
+
+
+        .dot-two {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            transform: rotate(-45deg);
+        }
+
+        .circle-two, .trail-two {
+            position: absolute;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: #5491B6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .trail-two {
+            background-color: rgba(177, 183, 187, 0.7);
+        }
+
+ .trail-two:nth-child(2) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.2725s; /* 0.01s + 0.2625s */
+    }
+    .trail-two:nth-child(3) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.2825s; /* 0.02s + 0.2625s */
+    }
+    .trail-two:nth-child(4) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.2925s; /* 0.03s + 0.2625s */
+    }
+    .trail-two:nth-child(5) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3025s; /* 0.04s + 0.2625s */
+    }
+    .trail-two:nth-child(6) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3125s; /* 0.05s + 0.2625s */
+    }
+    .trail-two:nth-child(7) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3225s; /* 0.06s + 0.2625s */
+    }
+    .trail-two:nth-child(8) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3325s; /* 0.07s + 0.2625s */
+    }
+    .trail-two:nth-child(9) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3425s; /* 0.08s + 0.2625s */
+    }
+    .trail-two:nth-child(10) {
+      animation: trail-two 1.05s ease-in-out infinite;
+      opacity: 0.025;
+      animation-delay: 0.3525s; /* 0.09s + 0.2625s */
+        }
+
+        @keyframes move {
+            0%, 100% { left: 0; }
+            50% { left: calc(100% - 10px); }
+        }
+
+        @keyframes trail-two {
+            0%, 100% { left: 0; opacity: 0; }
+            10% { opacity: 0.005; }
+            20%, 80% { opacity: 0.4; }
+            50% { left: calc(100% - 10px); opacity: 0.5;}
+        }
+
+        .circle-two {
+            animation: move 1.05s ease-in-out infinite;
+            animation-delay: 0.2625s; /* Start a quarter of the time after circle-one */
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="dot-one">
+        <div class="circle-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+        <div class="trail-one"></div>
+    </div>
+    <div class="dot-two">
+        <div class="circle-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+        <div class="trail-two"></div>
+    </div>
+</body>
+</html>

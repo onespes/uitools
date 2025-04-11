@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Content Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Reset defaults and set base styles */
+
+        /* Make the scrollbar track transparent */
+        ::-webkit-scrollbar {
+          width: 8px;  /* Adjust width as needed */
+          height: 8px; /* Adjust height for horizontal scrollbar */
+        }
+
+        /* Style the scrollbar track (background) */
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        /* Style the scrollbar thumb (the draggable part) */
+        ::-webkit-scrollbar-thumb {
+          background-color: rgba(128, 128, 128, 0.7); /* Grey color with 70% opacity */
+          border-radius: 10px; /* Optional: rounded corners for the thumb */
+        }
+
+        /* Optional: Add a hover effect to make the thumb a little darker when hovered */
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(128, 128, 128, 0.9); /* Slightly darker grey on hover */
+        }
+
+
+
+        #logotype {
+            position: fixed;
+            display: flex;
+            top: 20px;
+            left: 68px;
+            align-items: center;
+            width: auto;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Hanken Grotesk', sans-serif; /* Use Hanken Grotesk font */
+
+        }
+
+        /* Body background */
+        body {
+            background-color: #1d1d1d;
+            color: #f1f2f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 68px ;
+        }
+
+        /* Container with flexbox for centering */
+        .container {
+            background-color: #1f1f1f;
+            width: 100%;
+            height: calc(100% - 136px);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Content */
+        .content {
+            background-color: red;
+            max-width: 920px;
+            min-height: 100px; /* Adjust as needed */
+            padding: 30px;
+            margin: 0 auto ; /* This centers the content horizontally */
+            overflow: auto;
+            height: 400px; /* Add a fixed height to ensure scrolling */
+        }
+
+        .xpd-logo {
+            position: fixed;
+            top: 20px;
+            left: 12px;
+        }
+
+        .donation-nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            list-style-type: none; /* Remove default bullet points */
+            padding: 0;            /* Remove default padding */
+            margin: 0;             /* Remove default margin */
+        }
+
+        .donation-nav li {
+            display: flex;         /* Use flexbox for alignment */
+            align-items: center;   /* Center items vertically */
+            padding: 0px;         /* Add some padding */
+            margin: 0 0 16px;
+        }
+
+        .donation-nav li:hover {
+            cursor: pointer;
+        }
+
+        .custom-nav {
+            position: fixed;
+            top: 76px;
+            left: 12px;
+            list-style-type: none; /* Remove default bullet points */
+            padding: 0;            /* Remove default padding */
+            margin: 0;             /* Remove default margin */
+            width: 68px;
+        }
+
+        .custom-nav li {
+            display: flex;         /* Use flexbox for alignment */
+            align-items: center;   /* Center items vertically */
+            padding: 0px;         /* Add some padding */
+            margin: 0 0 16px;
+        }
+
+        .custom-nav li:hover {
+            cursor: pointer;
+        }
+
+        .icon-contrast, .icon-coffee, .icon-capitalization, .icon-textspace, .icon-figma, .icon-grid, .icon-question {
+            transition: opacity .3s;
+            opacity: 0.5;
+        }
+
+        .icon-contrast:hover, .icon-coffee:hover, .icon-capitalization:hover, .icon-textspace:hover, .icon-figma:hover, .icon-grid:hover, .icon-question:hover, .icon-contrast:hover {
+            opacity: 1;
+        }
+
+        /* Tooltip styling */
+        #tooltip {
+            position: fixed;
+            background-color: rgba(145, 164, 200, 0.3);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            white-space: nowrap;
+            transform: translate(16px, -10px); /* Offset from cursor */
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add a small arrow to the tooltip */
+        #tooltip:after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 25%;
+            transform: translateY(-50%);
+            border-width: 5px 8px 6px 0;
+            border-style: solid;
+            border-color: transparent rgba(145, 164, 200, 0.3) transparent transparent;
+        }
+
+        /* Tooltip-donation styling */
+        #tooltipdonation {
+            position: fixed;
+            background-color: rgba(200, 180, 150, 0.3);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            white-space: nowrap;
+            transform: translate(16px, -10px); /* Offset from cursor */
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add a small arrow to the tooltip */
+        #tooltipdonation:after {
+            content: "";
+            position: absolute;
+            right: -8px; /* Position the arrow on the right side of the tooltip */
+            top: 25%; /* Vertically center the arrow */
+            transform: translateY(-50%);
+            border-width: 5px 0 6px 8px; /* Arrow pointing to the left */
+            border-style: solid;
+            border-color: transparent transparent transparent rgba(200, 180, 150, 0.3); /* Adjust the arrow color */
+        }
+    </style>
+</head>
+<body>
+    <img src="xpd-logo.svg" alt="Company Logo" class="xpd-logo"> 
+    <div id="logotype">Xperience Design</div>
+
+    <ul class="custom-nav">
+        <li><img src="icon-contrast.svg" alt="Contrast checker" class="icon-contrast" data-tooltip="Check Contrast"></li>
+        <li><img src="icon-capitalization.svg" alt="Capitalization" class="icon-capitalization" data-tooltip="Capitalization Tools"></li>
+        <li><img src="icon-textspace.svg" alt="Text space" class="icon-textspace" data-tooltip="Text Spacing"></li>
+        <li><img src="icon-figma.svg" alt="Figma examples" class="icon-figma" data-tooltip="Figma Examples"></li>
+        <li><img src="icon-grid.svg" alt="Grid system" class="icon-grid" data-tooltip="Grid System"></li>
+        <li><img src="icon-question.svg" alt="Have a question" class="icon-question" data-tooltip="Help & FAQ"></li>
+    </ul>
+
+    <ul class="donation-nav">
+        <li><img src="icon-coffee.svg" alt="Buy me coffee" class="icon-coffee" data-tooltip="Buy Me Coffee"></li>
+    </ul>
+
+    <!-- Add the tooltip element for the general tooltip -->
+    <div id="tooltip"></div>
+    <!-- Add the tooltip element for the donation tooltip -->
+    <div id="tooltipdonation"></div>
+
+    <div class="container">
+        <div class="content" id="scrollContent">
+            <!-- The custom scrollbar will be added via JavaScript -->
+            <h1>Content Area</h1>
+            <p>This is a responsive content container with rounded corners and a smooth shadow.</p>
+            <p>The body background is #1d1d1d and the content background is #030303.</p>
+            <p>The content area has a margin of 88px all around on desktop screens.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltip = document.getElementById('tooltip');
+            const iconNavItems = document.querySelectorAll('.custom-nav li img');
+
+            // Function to show tooltip
+            function showTooltip(e) {
+                const tooltipText = this.getAttribute('data-tooltip');
+                if (tooltipText) {
+                    tooltip.textContent = tooltipText;
+                    tooltip.style.opacity = '1';
+                    updateTooltipPosition(e, tooltip);
+                }
+            }
+
+            // Function to hide tooltip
+            function hideTooltip() {
+                tooltip.style.opacity = '0';
+            }
+
+            // Function to update tooltip position
+            function updateTooltipPosition(e, tooltipElement) {
+                const x = e.clientX;
+                const y = e.clientY;
+                tooltipElement.style.left = x + 'px';
+                tooltipElement.style.top = y + 'px';
+            }
+
+            // Add event listeners to each icon
+            iconNavItems.forEach(item => {
+                item.addEventListener('mouseenter', showTooltip);
+                item.addEventListener('mouseleave', hideTooltip);
+                item.addEventListener('mousemove', (e) => updateTooltipPosition(e, tooltip));
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltipdonation = document.getElementById('tooltipdonation');
+            const donationNavItems = document.querySelectorAll('.donation-nav li img');
+
+            // Function to show tooltip
+            function showTooltip(e) {
+                const tooltipText = this.getAttribute('data-tooltip');
+                if (tooltipText) {
+                    tooltipdonation.textContent = tooltipText;
+                    tooltipdonation.style.opacity = '1';
+                    updateTooltipPosition(e, tooltipdonation);
+                }
+            }
+
+            // Function to hide tooltip
+            function hideTooltip() {
+                tooltipdonation.style.opacity = '0';
+            }
+
+            // Function to update tooltip position
+            function updateTooltipPosition(e, tooltipElement) {
+                const x = e.clientX;
+                const y = e.clientY;
+                const tooltipWidth = tooltipElement.offsetWidth;
+                tooltipElement.style.left = (x - tooltipWidth - 32) + 'px'; // Position adjustment for tooltipdonation
+                tooltipElement.style.top = y + 'px';
+            }
+
+            // Add event listeners to each icon
+            donationNavItems.forEach(item => {
+                item.addEventListener('mouseenter', showTooltip);
+                item.addEventListener('mouseleave', hideTooltip);
+                item.addEventListener('mousemove', (e) => updateTooltipPosition(e, tooltipdonation));
+            });
+        });
+
+
+
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  const scrollContainer = document.querySelector('.scroll-container');
+  let scrollTimer;
+  
+  scrollContainer.addEventListener('scroll', function() {
+    // Show scrollbar
+    scrollContainer.classList.add('scrolling');
+    
+    // Clear the previous timer
+    clearTimeout(scrollTimer);
+    
+    // Set a new timer to hide the scrollbar after scrolling stops
+    scrollTimer = setTimeout(function() {
+      scrollContainer.classList.remove('scrolling');
+    }, 1000); // Adjust timeout as needed (1 second in this example)
+  });
+});
+
+    </script>
+</body>
+</html>
