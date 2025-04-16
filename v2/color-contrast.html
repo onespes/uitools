@@ -2,782 +2,919 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xperience Design UI Documentation Layout</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Contrast Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(128, 128, 128, 0.7);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(128, 128, 128, 0.9);
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: #1d1d1d;
+            color: #f1f2f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        #logotype {
+            position: fixed;
+            display: flex;
+            top: 20px;
+            left: 68px;
+            align-items: center;
+            width: auto;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        /* Layout containers */
+        .container {
+            background-color: #1f1f1f;
+            width: 100%;
+            height: calc(100% - 120px);
+            border-radius: 4px;
+            padding: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content {
+            background-color: #1f1f1f;
+            max-width: 920px;
+            min-height: 100px;
+            padding: 30px;
+            margin: 0 auto;
+            overflow: auto;
+            height: 400px;
+        }
+
+        /* Navigation */
+        .xpd-logo {
+            position: fixed;
+            top: 20px;
+            left: 12px;
+        }
+
+        .donation-nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .donation-nav li {
+            display: flex;
+            align-items: center;
+            padding: 0px;
+            margin: 0 0 16px;
+        }
+
+        .donation-nav li:hover {
+            cursor: pointer;
+        }
+
+        .custom-nav {
+            position: fixed;
+            top: 76px;
+            left: 12px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 60px;
+        }
+
+        .custom-nav li {
+            display: flex;
+            align-items: center;
+            padding: 0px;
+            margin: 0 0 16px;
+        }
+
+        .custom-nav li:hover {
+            cursor: pointer;
+        }
+
+        /* Icons */
+        .icon-contrast,
+        .icon-coffee,
+        .icon-capitalization,
+        .icon-textspace,
+        .icon-figma,
+        .icon-grid,
+        .icon-question {
+            transition: opacity .3s;
+            opacity: 0.5;
+        }
+
+        .icon-contrast:hover,
+        .icon-coffee:hover,
+        .icon-capitalization:hover,
+        .icon-textspace:hover,
+        .icon-figma:hover,
+        .icon-grid:hover,
+        .icon-question:hover {
+            opacity: 1;
+        }
+
+        /* Tooltip styling */
+        #tooltip {
+            position: fixed;
+            background-color: rgba(145, 164, 200, 0.3);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            white-space: nowrap;
+            transform: translate(16px, -10px);
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #tooltip:after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 25%;
+            transform: translateY(-50%);
+            border-width: 5px 8px 6px 0;
+            border-style: solid;
+            border-color: transparent rgba(145, 164, 200, 0.3) transparent transparent;
+        }
+
+        #tooltipdonation {
+            position: fixed;
+            background-color: rgba(200, 180, 150, 0.3);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1000;
+            white-space: nowrap;
+            transform: translate(16px, -10px);
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #tooltipdonation:after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 25%;
+            transform: translateY(-50%);
+            border-width: 5px 0 6px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent rgba(200, 180, 150, 0.3);
+        }
+
+        /* Text elements */
+        h2 {
+            font-size: 18px;
+            margin: 30px 0 15px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            /* margin-bottom: 15px; */
+            background-color: #2a2a2a;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(145, 164, 200, 0.5);
+        }
+    </style>
 </head>
 
 <body>
-    <header class="py-3 px-4">
-        <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-8">
-                <button class="mobile-menu-btn">
-                    <i class="ri-menu-line text-xl"></i>
-                </button>
+    <img src="xpd-logo.svg" alt="Company Logo" class="xpd-logo">
+    <div id="logotype">Xperience Design</div>
 
-                <a href="#" class="logo">
-                    <i class="ri-code-box-line text-xl text-accent-color"></i>
-                    <span>Xperience Design UI</span>
-                </a>
-            </div>
+    <ul class="custom-nav">
+        <li><a href="./color-contrast.html"><img src="icon-contrast.svg" alt="Contrast checker"
+                class="icon-contrast" data-tooltip="Check Contrast"></a></li>
+        <li><a href="./index.html"><img src="icon-textspace.svg" alt="Text space" class="icon-textspace"
+                    data-tooltip="Text Spacing"></a></li>
+        <li><img src="icon-figma.svg" alt="Figma examples" class="icon-figma" data-tooltip="Figma Examples"></li>
+        <li><img src="icon-capitalization.svg" alt="Capitalization" class="icon-capitalization"
+                data-tooltip="Capitalization Tools"></li>
+        <li><img src="icon-grid.svg" alt="Grid system" class="icon-grid" data-tooltip="Grid System"></li>
+        <li><img src="icon-question.svg" alt="Have a question" class="icon-question" data-tooltip="Help & FAQ"></li>
+    </ul>
 
-            <div class="flex items-center gap-6">
-                <nav class="hidden md:block">
-                    <ul>
-                        <li><a href="#">Donate</a></li>
-                    </ul>
-                </nav>
+    <ul class="donation-nav">
+        <li><img src="icon-coffee.svg" alt="Buy me coffee" class="icon-coffee" data-tooltip="Buy Me Coffee"></li>
+    </ul>
 
-                <div class="flex items-center gap-2">
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                        <i class="ri-sun-line theme-toggle-icon theme-toggle-sun"></i>
-                        <i class="ri-moon-line theme-toggle-icon theme-toggle-moon" style="display: none"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        </div>
-    </header>
+    <div id="tooltip"></div>
+    <div id="tooltipdonation"></div>
 
-    <div class="main-container">
-        <aside class="sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Overview</h3>
-                <ul class="sidebar-links">
-                    <li><a href="#" class="sidebar-link">Introduction</a></li>
-                    <li><a href="#" class="sidebar-link">Installation</a></li>
-                    <li><a href="#" class="sidebar-link">Releases</a></li>
-                </ul>
-            </div>
+    <div class="container">
+        <div class="content" id="scrollContent">
+            <div class="case-container" id="contrast-checker">
+                <h1>Color Contrast Checker</h1>
 
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Guides</h3>
-                <ul class="sidebar-links">
-                    <li>
-                        <div class="sidebar-group">
-                            <div class="sidebar-group-title">
-                                <span>Getting Started</span>
-                                <i class="ri-arrow-down-s-line"></i>
-                            </div>
-                            <div class="sidebar-group-content">
-                                <a href="#" class="sidebar-link">Setup</a>
-                                <a href="#" class="sidebar-link">Styling</a>
-                                <a href="#" class="sidebar-link">Theming</a>
-                            </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="flex: 1; min-width: 150px;">
+                        <label for="foreground-color">Foreground</label>
+                        <div style="display: flex; align-items: center;">
+                            <input type="text" id="foreground-color" placeholder="#FFFFFF" value="#FFFFFF">
+                            <input type="color" id="foreground-color-picker" value="#FFFFFF"
+                                style="width: 40px; height: 40px; margin-left: 0.5rem; border: 1px solid #333; background: none; cursor: pointer;">
                         </div>
-                    </li>
-                    <li><a href="#" class="sidebar-link">Accessibility</a></li>
-                    <li><a href="#" class="sidebar-link">SSR Support</a></li>
-                </ul>
-            </div>
+                    </div>
 
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Tools</h3>
-                <ul class="sidebar-links">
-                    <li><a href="./index.html" class="sidebar-link">Text Case Converter</a></li>
-                    <li><a href="./color-contrast.html" class="sidebar-link active">Color Contrast Checker</a></li>
-                    <li><a href="#" class="sidebar-link">Avatar</a></li>
-                    <li><a href="#" class="sidebar-link">Button</a></li>
-                    <li><a href="#" class="sidebar-link">Checkbox</a></li>
-                    <li><a href="#" class="sidebar-link">Dialog</a></li>
-                    <li><a href="#" class="sidebar-link">Dropdown Menu</a></li>
-                    <li><a href="#" class="sidebar-link">Input</a></li>
-                    <li><a href="#" class="sidebar-link">Popover</a></li>
-                    <li><a href="#" class="sidebar-link">Tabs</a></li>
-                    <li><a href="#" class="sidebar-link">Toast</a></li>
-                    <li><a href="#" class="sidebar-link">Tooltip</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <div class="content-wrapper">
-            <main class="content">
-                <div class="breadcrumb">
-                    <a href="#">Docs</a>
-                    <i class="ri-arrow-right-s-line"></i>
-                    <a href="#">Overview</a>
-                    <i class="ri-arrow-right-s-line"></i>
-                    <span>Text Case Converter</span>
+                    <div style="flex: 1; min-width: 150px;">
+                        <label for="background-color">Background</label>
+                        <div style="display: flex; align-items: center;">
+                            <input type="text" id="background-color" placeholder="#000000" value="#1A1A1A">
+                            <input type="color" id="background-color-picker" value="#1A1A1A"
+                                style="width: 40px; height: 40px; margin-left: 0.5rem; border: 1px solid #333; background: none; cursor: pointer;">
+                        </div>
+                    </div>
                 </div>
 
-                <header class="py-4 px-6 flex items-center justify-between">
-                    <div class="logo">
-                        <i class="fas fa-font text-xl"></i>
-                        <span>Text Case Converter</span>
-                    </div>
-                    <button id="theme-toggle" class="theme-toggle">
-                        <i id="theme-icon" class="fas fa-moon"></i>
-                    </button>
-                </header>
-                <!-- COLOR CONTRAST CHECKER HERE -->
-                <div class="case-container" id="contrast-checker">
-                    <h2>Color Contrast Checker</h2>
-                    <p>Check if your color combinations meet WCAG accessibility standards.</p>
 
-                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                        <div style="flex: 1; min-width: 250px;">
-                            <label for="foreground-color">Text Color</label>
-                            <div style="display: flex; align-items: center;">
-                                <input type="text" id="foreground-color" placeholder="#FFFFFF" value="#FFFFFF">
-                                <input type="color" id="foreground-color-picker" value="#FFFFFF"
-                                    style="width: 40px; height: 40px; margin-left: 0.5rem; border: 1px solid var(--border-color); background: none; cursor: pointer;">
-                            </div>
+                <div id="contrast-results">
+                    <div style="display: flex; flex-direction: row; gap: 2rem;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <table style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th style="font-weight: 300">AA</th>
+                                        <th style="font-weight: 300">AAA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th style="font-weight: 300; text-align: left">Normal Text</th>
+                                        <td style="text-align: center"><span id="aa-small-result"><span
+                                                    style="color: #4CAF50;">✓</span></td>
+                                        <td style="text-align: center"><span id="aa-large-result"><span
+                                                    style="color: #4CAF50;">✓</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="font-weight: 300; text-align: left">Large Text</th>
+                                        <td style="text-align: center"><span id="aaa-small-result"><span
+                                                    style="color: #4CAF50;">✓</span></td>
+                                        <td style="text-align: center"><span id="aaa-large-result"><span
+                                                    style="color: #4CAF50;">✓</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
-                        <div style="flex: 1; min-width: 250px;">
-                            <label for="background-color">Background Color</label>
-                            <div style="display: flex; align-items: center;">
-                                <input type="text" id="background-color" placeholder="#000000" value="#1A1A1A">
-                                <input type="color" id="background-color-picker" value="#1A1A1A"
-                                    style="width: 40px; height: 40px; margin-left: 0.5rem; border: 1px solid var(--border-color); background: none; cursor: pointer;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 1.5rem;">
-                        <label>Preview</label>
-                        <div id="contrast-preview"
-                            style="padding: 2rem; border-radius: 0.375rem; background-color: #1A1A1A; color: #FFFFFF; text-align: center; border: 1px solid var(--border-color);">
-                            <p style="font-size: 1.25rem; margin-bottom: 0.5rem;">Sample Text</p>
-                            <p style="font-size: 1rem; margin-bottom: 0.5rem;">Lorem ipsum dolor sit amet</p>
-                            <p style="font-size: 0.875rem;">Smaller text example</p>
-                        </div>
-                    </div>
-
-                    <div id="contrast-results"
-                        style="background-color: var(--bg-tertiary); border-radius: 0.375rem; padding: 1.5rem; border: 1px solid var(--border-color);">
-                        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-                            <div style="flex: 1; min-width: 200px;">
-                                <h3 style="margin-top: 0;">Contrast Ratio</h3>
-                                <div id="contrast-ratio-value"
-                                    style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">21:1</div>
-                                <div id="contrast-ratio-meter"
-                                    style="height: 8px; background-color: var(--border-color); border-radius: 4px; overflow: hidden; margin-bottom: 1rem;">
-                                    <div style="height: 100%; width: 100%; background-color: var(--accent-color);">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="flex: 1; min-width: 200px;">
-                                <h3 style="margin-top: 0;">WCAG Compliance</h3>
-                                <div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                        <span>AA Small Text (4.5:1)</span>
-                                        <span id="aa-small-result"><span style="color: var(--accent-color);">✓
-                                                Pass</span></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                        <span>AA Large Text (3:1)</span>
-                                        <span id="aa-large-result"><span style="color: var(--accent-color);">✓
-                                                Pass</span></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                        <span>AAA Small Text (7:1)</span>
-                                        <span id="aaa-small-result"><span style="color: var(--accent-color);">✓
-                                                Pass</span></span>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                        <span>AAA Large Text (4.5:1)</span>
-                                        <span id="aaa-large-result"><span style="color: var(--accent-color);">✓
-                                                Pass</span></span>
-                                    </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h3 style="margin-top: 0;">Contrast Ratio</h3>
+                            <div id="contrast-ratio-value"
+                                style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">21</div>
+                            <div id="contrast-ratio-meter"
+                                style="height: 8px; background-color: #333; border-radius: 4px; overflow: hidden; margin-bottom: 1rem;">
+                                <div style="height: 100%; width: 100%; background-color: #4CAF50;">
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div style="margin-top: 1.5rem;">
-                        <label>Suggested Color Adjustments</label>
-                        <div id="color-suggestions"
-                            style="background-color: var(--bg-tertiary); border-radius: 0.375rem; padding: 1rem; border: 1px solid var(--border-color);">
-                            <p id="suggestion-text">Your color combination has excellent contrast.</p>
-                            <div id="suggestion-swatches"
-                                style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;"></div>
-                        </div>
                     </div>
                 </div>
 
-                <script>
-                    // Color Contrast Checker
-                    (function () {
-                        // DOM Elements
-                        const foregroundInput = document.getElementById('foreground-color');
-                        const foregroundPicker = document.getElementById('foreground-color-picker');
-                        const backgroundInput = document.getElementById('background-color');
-                        const backgroundPicker = document.getElementById('background-color-picker');
-                        const contrastPreview = document.getElementById('contrast-preview');
-                        const contrastRatioValue = document.getElementById('contrast-ratio-value');
-                        const contrastRatioMeter = document.getElementById('contrast-ratio-meter').querySelector('div');
-                        const aaSmallResult = document.getElementById('aa-small-result');
-                        const aaLargeResult = document.getElementById('aa-large-result');
-                        const aaaSmallResult = document.getElementById('aaa-small-result');
-                        const aaaLargeResult = document.getElementById('aaa-large-result');
-                        const suggestionText = document.getElementById('suggestion-text');
-                        const suggestionSwatches = document.getElementById('suggestion-swatches');
-
-                        // Standards
-                        const WCAG = {
-                            AA: {
-                                smallText: 4.5,
-                                largeText: 3
-                            },
-                            AAA: {
-                                smallText: 7,
-                                largeText: 4.5
-                            }
-                        };
-
-                        // Initialize with default values
-                        updateContrastCheck();
-
-                        // Event Listeners
-                        foregroundInput.addEventListener('input', updateFromTextInput);
-                        backgroundInput.addEventListener('input', updateFromTextInput);
-                        foregroundPicker.addEventListener('input', updateFromColorPicker);
-                        backgroundPicker.addEventListener('input', updateFromColorPicker);
-
-                        // Functions
-                        function updateFromTextInput(e) {
-                            const input = e.target;
-                            const value = input.value.trim();
-
-                            // Check if the value is a valid hex color
-                            const isValidHex = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i.test(value);
-
-                            if (isValidHex) {
-                                // Convert to proper hex format if needed
-                                const properHex = value.startsWith('#') ? value : `#${value}`;
-
-                                // Update the associated color picker
-                                if (input === foregroundInput) {
-                                    foregroundPicker.value = properHex;
-                                    foregroundInput.value = properHex;
-                                } else {
-                                    backgroundPicker.value = properHex;
-                                    backgroundInput.value = properHex;
-                                }
-
-                                updateContrastCheck();
-                            }
-                        }
-
-                        function updateFromColorPicker(e) {
-                            const picker = e.target;
-                            const value = picker.value;
-
-                            if (picker === foregroundPicker) {
-                                foregroundInput.value = value;
-                            } else {
-                                backgroundInput.value = value;
-                            }
-
-                            updateContrastCheck();
-                        }
-
-                        function updateContrastCheck() {
-                            const fgColor = foregroundInput.value;
-                            const bgColor = backgroundInput.value;
-
-                            // Update preview
-                            contrastPreview.style.color = fgColor;
-                            contrastPreview.style.backgroundColor = bgColor;
-
-                            // Calculate contrast ratio
-                            const ratio = calculateContrastRatio(fgColor, bgColor);
-                            const formattedRatio = ratio.toFixed(2) + ':1';
-
-                            // Update ratio display
-                            contrastRatioValue.textContent = formattedRatio;
-
-                            // Update meter (max reasonable ratio is 21:1)
-                            const meterPercentage = Math.min(100, (ratio / 21) * 100);
-                            contrastRatioMeter.style.width = `${meterPercentage}%`;
-
-                            // Determine color for meter based on compliance
-                            if (ratio >= WCAG.AAA.smallText) {
-                                contrastRatioMeter.style.backgroundColor = 'var(--accent-color)';
-                            } else if (ratio >= WCAG.AA.smallText) {
-                                contrastRatioMeter.style.backgroundColor = '#eab308'; // Amber
-                            } else {
-                                contrastRatioMeter.style.backgroundColor = '#ef4444'; // Red
-                            }
-
-                            // Update compliance checks
-                            updateComplianceResult(aaSmallResult, ratio >= WCAG.AA.smallText);
-                            updateComplianceResult(aaLargeResult, ratio >= WCAG.AA.largeText);
-                            updateComplianceResult(aaaSmallResult, ratio >= WCAG.AAA.smallText);
-                            updateComplianceResult(aaaLargeResult, ratio >= WCAG.AAA.largeText);
-
-                            // Generate suggestions
-                            generateSuggestions(ratio, fgColor, bgColor);
-                        }
-
-                        function updateComplianceResult(element, passes) {
-                            if (passes) {
-                                element.innerHTML = '<span style="color: var(--accent-color);">✓ Pass</span>';
-                            } else {
-                                element.innerHTML = '<span style="color: #ef4444;">✗ Fail</span>';
-                            }
-                        }
-
-                        function generateSuggestions(ratio, fgColor, bgColor) {
-                            suggestionSwatches.innerHTML = '';
-
-                            if (ratio >= WCAG.AAA.smallText) {
-                                suggestionText.textContent = 'Your color combination has excellent contrast.';
-                                return;
-                            }
-
-                            if (ratio >= WCAG.AA.smallText) {
-                                suggestionText.textContent = 'Your color combination has good contrast but could be improved for AAA compliance.';
-                            } else {
-                                suggestionText.textContent = 'Your color combination needs improvement to meet accessibility standards.';
-                            }
-
-                            // Generate suggested alternatives
-                            const fgRgb = hexToRgb(fgColor);
-                            const bgRgb = hexToRgb(bgColor);
-
-                            // Determine if we should adjust foreground or background
-                            // Generally, it's better to darken light text or lighten dark backgrounds
-                            const fgLuminance = calculateLuminance(fgRgb.r, fgRgb.g, fgRgb.b);
-                            const bgLuminance = calculateLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
-
-                            // Create an array for our suggestions
-                            const suggestions = [];
-
-                            // 1. Standard adjustments - make text lighter/darker or background lighter/darker
-                            if (fgLuminance > bgLuminance) {
-                                // Foreground is lighter than background, make it even lighter
-                                suggestions.push(createSuggestion(adjustColor(fgRgb, 1.2), bgRgb, 'Lighter text'));
-                            } else {
-                                // Foreground is darker than background, make it even darker
-                                suggestions.push(createSuggestion(adjustColor(fgRgb, 0.8), bgRgb, 'Darker text'));
-                            }
-
-                            if (bgLuminance > fgLuminance) {
-                                // Background is lighter than foreground, make it even lighter
-                                suggestions.push(createSuggestion(fgRgb, adjustColor(bgRgb, 1.2), 'Lighter bg'));
-                            } else {
-                                // Background is darker than foreground, make it even darker
-                                suggestions.push(createSuggestion(fgRgb, adjustColor(bgRgb, 0.8), 'Darker bg'));
-                            }
-
-                            // 2. Add more nuanced color adjustments - shift hue slightly while maintaining similar feel
-
-                            // For foreground color - shift hue while maintaining similar brightness
-                            const fgHsl = rgbToHsl(fgRgb.r, fgRgb.g, fgRgb.b);
-
-                            // Slightly adjust hue by 15 degrees
-                            const fgHslShifted1 = {
-                                h: (fgHsl.h + 15) % 360,
-                                s: fgHsl.s,
-                                l: fgLuminance > bgLuminance ? Math.min(fgHsl.l * 1.1, 0.95) : Math.max(fgHsl.l * 0.9, 0.05)
-                            };
-
-                            // Convert back to RGB
-                            const fgRgbShifted1 = hslToRgb(fgHslShifted1.h, fgHslShifted1.s, fgHslShifted1.l);
-
-                            // For background color - shift hue while maintaining similar brightness
-                            const bgHsl = rgbToHsl(bgRgb.r, bgRgb.g, bgRgb.b);
-
-                            // Slightly adjust hue by 15 degrees in the opposite direction
-                            const bgHslShifted1 = {
-                                h: (bgHsl.h - 15 + 360) % 360,
-                                s: bgHsl.s,
-                                l: bgLuminance > fgLuminance ? Math.min(bgHsl.l * 1.1, 0.95) : Math.max(bgHsl.l * 0.9, 0.05)
-                            };
-
-                            // Convert back to RGB
-                            const bgRgbShifted1 = hslToRgb(bgHslShifted1.h, bgHslShifted1.s, bgHslShifted1.l);
-
-                            // Add these new color combinations to our suggestions
-                            suggestions.push(createSuggestion(fgRgbShifted1, bgRgb, 'Adjusted text hue'));
-                            suggestions.push(createSuggestion(fgRgb, bgRgbShifted1, 'Adjusted bg hue'));
-
-                            // 3. Try increasing saturation for more vibrant colors if original colors are not very saturated
-                            if (fgHsl.s < 0.5) {
-                                const moreSaturatedFg = {
-                                    h: fgHsl.h,
-                                    s: Math.min(fgHsl.s + 0.2, 0.8),
-                                    l: fgHsl.l
-                                };
-                                const fgRgbSaturated = hslToRgb(moreSaturatedFg.h, moreSaturatedFg.s, moreSaturatedFg.l);
-                                suggestions.push(createSuggestion(fgRgbSaturated, bgRgb, 'More vibrant text'));
-                            }
-
-                            if (bgHsl.s < 0.5) {
-                                const moreSaturatedBg = {
-                                    h: bgHsl.h,
-                                    s: Math.min(bgHsl.s + 0.2, 0.8),
-                                    l: bgHsl.l
-                                };
-                                const bgRgbSaturated = hslToRgb(moreSaturatedBg.h, moreSaturatedBg.s, moreSaturatedBg.l);
-                                suggestions.push(createSuggestion(fgRgb, bgRgbSaturated, 'More vibrant bg'));
-                            }
-
-                            // 4. Try complementary colors that still maintain the theme
-                            // Shift hue by 180 degrees but adjust luminance to maintain contrast
-                            const complementaryFgHsl = {
-                                h: (fgHsl.h + 180) % 360,
-                                s: fgHsl.s,
-                                l: fgLuminance > bgLuminance ? 0.9 : 0.1 // Make it very light or very dark based on original relationship
-                            };
-
-                            const fgRgbComplementary = hslToRgb(complementaryFgHsl.h, complementaryFgHsl.s, complementaryFgHsl.l);
-                            suggestions.push(createSuggestion(fgRgbComplementary, bgRgb, 'Complementary text'));
-
-                            // Filter suggestions to only include those that pass at least AA standard
-                            const validSuggestions = suggestions.filter(s => s.ratio >= WCAG.AA.smallText)
-                                // Sort by contrast ratio, highest first
-                                .sort((a, b) => b.ratio - a.ratio)
-                                // Take the top suggestions to avoid overwhelming the user
-                                .slice(0, 6);
-
-                            // Display suggestions
-                            validSuggestions.forEach(suggestion => {
-                                const swatch = document.createElement('div');
-                                swatch.classList.add('color-suggestion');
-                                swatch.style.position = 'relative';
-                                swatch.style.width = '110px';
-                                swatch.style.borderRadius = '0.375rem';
-                                swatch.style.overflow = 'hidden';
-                                swatch.style.border = '1px solid var(--border-color)';
-                                swatch.style.cursor = 'pointer';
-                                swatch.style.transition = 'transform 0.2s, box-shadow 0.2s';
-                                swatch.style.boxShadow = 'var(--shadow-sm)';
-
-                                // Add hover effect
-                                swatch.addEventListener('mouseenter', () => {
-                                    swatch.style.transform = 'translateY(-2px)';
-                                    swatch.style.boxShadow = 'var(--shadow-md)';
-                                });
-
-                                swatch.addEventListener('mouseleave', () => {
-                                    swatch.style.transform = 'translateY(0)';
-                                    swatch.style.boxShadow = 'var(--shadow-sm)';
-                                });
-
-                                const preview = document.createElement('div');
-                                preview.style.padding = '1.25rem 0.5rem';
-                                preview.style.textAlign = 'center';
-                                preview.style.backgroundColor = suggestion.bgHex;
-                                preview.style.color = suggestion.fgHex;
-                                preview.innerHTML = '<span style="font-size: 1.25rem; font-weight: bold;">Aa</span><br><span style="font-size: 0.75rem;">Text</span>';
-
-                                const info = document.createElement('div');
-                                info.style.padding = '0.5rem';
-                                info.style.fontSize = '0.75rem';
-                                info.style.backgroundColor = 'var(--bg-secondary)';
-                                info.style.borderTop = '1px solid var(--border-color)';
-                                info.style.color = 'var(--text-primary)';
-
-                                // Add a badge if this meets AAA standards
-                                if (suggestion.ratio >= WCAG.AAA.smallText) {
-                                    info.innerHTML = `<span style="color: var(--accent-color); font-weight: 600;">${suggestion.ratio.toFixed(2)}:1 AAA</span>`;
-                                } else {
-                                    info.innerHTML = `<span style="font-weight: 600;">${suggestion.ratio.toFixed(2)}:1 AA</span>`;
-                                }
-
-                                const type = document.createElement('div');
-                                type.style.fontSize = '0.7rem';
-                                type.style.padding = '0 0.5rem 0.5rem';
-                                type.style.backgroundColor = 'var(--bg-secondary)';
-                                type.style.color = 'var(--text-secondary)';
-                                type.textContent = suggestion.label;
-
-                                swatch.appendChild(preview);
-                                swatch.appendChild(info);
-                                swatch.appendChild(type);
-
-                                // Add color codes tooltip
-                                const tooltip = document.createElement('div');
-                                tooltip.style.position = 'absolute';
-                                tooltip.style.bottom = '100%';
-                                tooltip.style.left = '50%';
-                                tooltip.style.transform = 'translateX(-50%)';
-                                tooltip.style.backgroundColor = 'var(--bg-primary)';
-                                tooltip.style.color = 'var(--text-primary)';
-                                tooltip.style.padding = '0.5rem';
-                                tooltip.style.borderRadius = '0.25rem';
-                                tooltip.style.boxShadow = 'var(--shadow-md)';
-                                tooltip.style.fontSize = '0.75rem';
-                                tooltip.style.whiteSpace = 'nowrap';
-                                tooltip.style.zIndex = '10';
-                                tooltip.style.opacity = '0';
-                                tooltip.style.transition = 'opacity 0.2s';
-                                tooltip.style.pointerEvents = 'none';
-                                tooltip.innerHTML = `Text: ${suggestion.fgHex}<br>Background: ${suggestion.bgHex}`;
-
-                                swatch.addEventListener('mouseenter', () => {
-                                    tooltip.style.opacity = '1';
-                                });
-
-                                swatch.addEventListener('mouseleave', () => {
-                                    tooltip.style.opacity = '0';
-                                });
-
-                                swatch.appendChild(tooltip);
-
-                                // Add click event to apply this suggestion
-                                swatch.addEventListener('click', () => {
-                                    foregroundInput.value = suggestion.fgHex;
-                                    backgroundInput.value = suggestion.bgHex;
-                                    foregroundPicker.value = suggestion.fgHex;
-                                    backgroundPicker.value = suggestion.bgHex;
-                                    updateContrastCheck();
-                                });
-
-                                suggestionSwatches.appendChild(swatch);
-                            });
-
-                            // If we couldn't find any valid suggestions, add a note
-                            if (validSuggestions.length === 0) {
-                                suggestionText.textContent = 'Unable to generate suggestions that meet accessibility standards. Try selecting very different colors.';
-                            }
-                        }
-
-                        function createSuggestion(fgRgb, bgRgb, label) {
-                            const fgHex = rgbToHex(fgRgb.r, fgRgb.g, fgRgb.b);
-                            const bgHex = rgbToHex(bgRgb.r, bgRgb.g, bgRgb.b);
-                            const ratio = calculateContrastRatio(fgHex, bgHex);
-
-                            return {
-                                fgHex,
-                                bgHex,
-                                ratio,
-                                label
-                            };
-                        }
-
-                        function adjustColor(rgb, factor) {
-                            return {
-                                r: clamp(Math.round(rgb.r * factor), 0, 255),
-                                g: clamp(Math.round(rgb.g * factor), 0, 255),
-                                b: clamp(Math.round(rgb.b * factor), 0, 255)
-                            };
-                        }
-
-                        function clamp(value, min, max) {
-                            return Math.min(Math.max(value, min), max);
-                        }
-
-                        // Color Conversion Functions
-                        function hexToRgb(hex) {
-                            // Remove # if present
-                            hex = hex.replace(/^#/, '');
-
-                            // Handle shorthand hex
-                            if (hex.length === 3) {
-                                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-                            }
-
-                            const r = parseInt(hex.substring(0, 2), 16);
-                            const g = parseInt(hex.substring(2, 4), 16);
-                            const b = parseInt(hex.substring(4, 6), 16);
-
-                            return { r, g, b };
-                        }
-
-                        function rgbToHex(r, g, b) {
-                            return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
-                        }
-
-                        function componentToHex(c) {
-                            const hex = c.toString(16);
-                            return hex.length === 1 ? '0' + hex : hex;
-                        }
-
-                        function rgbToHsl(r, g, b) {
-                            r /= 255;
-                            g /= 255;
-                            b /= 255;
-
-                            const max = Math.max(r, g, b);
-                            const min = Math.min(r, g, b);
-                            let h, s, l = (max + min) / 2;
-
-                            if (max === min) {
-                                h = s = 0; // achromatic
-                            } else {
-                                const d = max - min;
-                                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-                                switch (max) {
-                                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                                    case g: h = (b - r) / d + 2; break;
-                                    case b: h = (r - g) / d + 4; break;
-                                }
-
-                                h /= 6;
-                            }
-
-                            return { h: h * 360, s, l };
-                        }
-
-                        function hslToRgb(h, s, l) {
-                            h /= 360;
-                            let r, g, b;
-
-                            if (s === 0) {
-                                r = g = b = l; // achromatic
-                            } else {
-                                const hue2rgb = (p, q, t) => {
-                                    if (t < 0) t += 1;
-                                    if (t > 1) t -= 1;
-                                    if (t < 1 / 6) return p + (q - p) * 6 * t;
-                                    if (t < 1 / 2) return q;
-                                    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-                                    return p;
-                                };
-
-                                const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                                const p = 2 * l - q;
-
-                                r = hue2rgb(p, q, h + 1 / 3);
-                                g = hue2rgb(p, q, h);
-                                b = hue2rgb(p, q, h - 1 / 3);
-                            }
-
-                            return {
-                                r: Math.round(r * 255),
-                                g: Math.round(g * 255),
-                                b: Math.round(b * 255)
-                            };
-                        }
-
-                        function calculateLuminance(r, g, b) {
-                            // Convert RGB to linear values
-                            const rLinear = r / 255;
-                            const gLinear = g / 255;
-                            const bLinear = b / 255;
-
-                            // Convert to sRGB
-                            const rSrgb = rLinear <= 0.03928 ? rLinear / 12.92 : Math.pow((rLinear + 0.055) / 1.055, 2.4);
-                            const gSrgb = gLinear <= 0.03928 ? gLinear / 12.92 : Math.pow((gLinear + 0.055) / 1.055, 2.4);
-                            const bSrgb = bLinear <= 0.03928 ? bLinear / 12.92 : Math.pow((bLinear + 0.055) / 1.055, 2.4);
-
-                            // Calculate luminance
-                            return 0.2126 * rSrgb + 0.7152 * gSrgb + 0.0722 * bSrgb;
-                        }
-
-                        function calculateContrastRatio(color1, color2) {
-                            const rgb1 = hexToRgb(color1);
-                            const rgb2 = hexToRgb(color2);
-
-                            const luminance1 = calculateLuminance(rgb1.r, rgb1.g, rgb1.b);
-                            const luminance2 = calculateLuminance(rgb2.r, rgb2.g, rgb2.b);
-
-                            // Determine lighter and darker luminance
-                            const lighter = Math.max(luminance1, luminance2);
-                            const darker = Math.min(luminance1, luminance2);
-
-                            // Calculate ratio
-                            return (lighter + 0.05) / (darker + 0.05);
-                        }
-                    })();
-                </script>
-                <!-- END COLOR CONTRAST CHECKER -->
-
-            </main>
-
-            <aside class="toc">
-                <h2 class="toc-title">On this page</h2>
-                <ul class="toc-links">
-                    <li>
-                        <a href="#introduction" class="toc-link">Introduction</a>
-                    </li>
-                    <li>
-                        <a href="#rebrand-Xperience Design-ui" class="toc-link">Rebrand: Xperience Design UI</a>
-                    </li>
-                    <li>
-                        <a href="#our-principles" class="toc-link">Our Principles</a>
-                    </li>
-                    <li>
-                        <a href="#accessibility-first" class="toc-link">Accessibility-First</a>
-                    </li>
-                    <li>
-                        <a href="#customizable-unstyled" class="toc-link">Customizable & Unstyled</a>
-                    </li>
-                    <li><a href="#open-modular" class="toc-link">Open & Modular</a></li>
-                    <li>
-                        <a href="#flexible-state-management" class="toc-link">Flexible State Management</a>
-                    </li>
-                    <li>
-                        <a href="#developer-centric-experience" class="toc-link">Developer-Centric Experience</a>
-                    </li>
-                    <li>
-                        <a href="#performance-tree-shaking" class="toc-link">Performance & Tree-Shaking</a>
-                    </li>
-                </ul>
-
-                <div class="community-section">
-                    <p>Join our community</p>
-                    <div class="community-links">
-                        <a href="#"><i class="ri-github-fill"></i></a>
-                        <a href="#"><i class="ri-discord-fill"></i></a>
-                        <a href="#"><i class="ri-twitter-fill"></i></a>
+                <div id="contrast-preview">
+                    <div class="preview-heading">
+                        I can do all this through him who gives me strength
+                    </div>
+                    <p style="color: inherit">My frame was not hidden from you, when I was being made in secret,
+                        intricately woven in the depths of the earth.</p>
+                    <p style="color: inherit">For his invisible attributes, namely, his eternal power and divine nature,
+                        have been clearly perceived, ever since the creation of the world, in the things that have been
+                        made.</p>
+                    <p style="color: inherit">These commandments that I give you today are to be on your hearts. Impress
+                        them on your children. Talk about them when you sit at home and when you walk along the road,
+                        when you lie down and when you get up.</p>
+                    <p style="color: inherit">Love is patient, love is kind. It does not envy, it does not boast, it is
+                        not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it
+                        keeps no record of wrongs.</p>
+                    <p style="color: inherit">Do everything in love.</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <label>Suggested Color Adjustments</label>
+                    <div id="color-suggestions"
+                        style="background-color: #252525; border-radius: 0.375rem; padding: 1rem; border: 1px solid #333;">
+                        <p id="suggestion-text">Your color combination has excellent contrast.</p>
+                        <div id="suggestion-swatches"
+                            style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;"></div>
                     </div>
                 </div>
-            </aside>
+            </div>
         </div>
     </div>
 
     <script>
-        // Theme toggling functionality
-        document.addEventListener("DOMContentLoaded", () => {
-            const themeToggle = document.getElementById("theme-toggle");
-            const prefersDarkScheme = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            );
+        // Color Contrast Checker
+        (function () {
+            // DOM Elements
+            const foregroundInput = document.getElementById('foreground-color');
+            const foregroundPicker = document.getElementById('foreground-color-picker');
+            const backgroundInput = document.getElementById('background-color');
+            const backgroundPicker = document.getElementById('background-color-picker');
+            const contrastPreview = document.getElementById('contrast-preview');
+            const contrastRatioValue = document.getElementById('contrast-ratio-value');
+            const contrastRatioMeter = document.getElementById('contrast-ratio-meter').querySelector('div');
+            const aaSmallResult = document.getElementById('aa-small-result');
+            const aaLargeResult = document.getElementById('aa-large-result');
+            const aaaSmallResult = document.getElementById('aaa-small-result');
+            const aaaLargeResult = document.getElementById('aaa-large-result');
+            const suggestionText = document.getElementById('suggestion-text');
+            const suggestionSwatches = document.getElementById('suggestion-swatches');
 
-            // Get saved theme from localStorage or use system preference
-            const savedTheme =
-                localStorage.getItem("theme") ||
-                (prefersDarkScheme.matches ? "dark" : "light");
+            // Standards
+            const WCAG = {
+                AA: {
+                    smallText: 4.5,
+                    largeText: 3
+                },
+                AAA: {
+                    smallText: 7,
+                    largeText: 4.5
+                }
+            };
 
-            // Set initial theme
-            document.documentElement.setAttribute("data-theme", savedTheme);
-            updateThemeIcon(savedTheme);
+            // Initialize with default values
+            updateContrastCheck();
 
-            themeToggle.addEventListener("click", () => {
-                const currentTheme =
-                    document.documentElement.getAttribute("data-theme");
-                const newTheme = currentTheme === "dark" ? "light" : "dark";
+            // Event Listeners
+            foregroundInput.addEventListener('input', updateFromTextInput);
+            backgroundInput.addEventListener('input', updateFromTextInput);
+            foregroundPicker.addEventListener('input', updateFromColorPicker);
+            backgroundPicker.addEventListener('input', updateFromColorPicker);
 
-                document.documentElement.setAttribute("data-theme", newTheme);
-                localStorage.setItem("theme", newTheme);
-                updateThemeIcon(newTheme);
-            });
+            // Functions
+            function updateFromTextInput(e) {
+                const input = e.target;
+                const value = input.value.trim();
 
-            function updateThemeIcon(theme) {
-                const sunIcon = document.querySelector(".theme-toggle-sun");
-                const moonIcon = document.querySelector(".theme-toggle-moon");
+                // Check if the value is a valid hex color
+                const isValidHex = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i.test(value);
 
-                if (theme === "dark") {
-                    sunIcon.style.display = "none";
-                    moonIcon.style.display = "block";
-                } else {
-                    sunIcon.style.display = "block";
-                    moonIcon.style.display = "none";
+                if (isValidHex) {
+                    // Convert to proper hex format if needed
+                    const properHex = value.startsWith('#') ? value : `#${value}`;
+
+                    // Update the associated color picker
+                    if (input === foregroundInput) {
+                        foregroundPicker.value = properHex;
+                        foregroundInput.value = properHex;
+                    } else {
+                        backgroundPicker.value = properHex;
+                        backgroundInput.value = properHex;
+                    }
+
+                    updateContrastCheck();
                 }
             }
-        });
 
-        // Simple sidebar toggle functionality
-        document
-            .querySelector(".sidebar-group-title")
-            .addEventListener("click", function () {
-                const content = this.nextElementSibling;
-                content.style.display =
-                    content.style.display === "none" ? "block" : "none";
+            function updateFromColorPicker(e) {
+                const picker = e.target;
+                const value = picker.value;
+
+                if (picker === foregroundPicker) {
+                    foregroundInput.value = value;
+                } else {
+                    backgroundInput.value = value;
+                }
+
+                updateContrastCheck();
+            }
+
+            function updateContrastCheck() {
+                const fgColor = foregroundInput.value;
+                const bgColor = backgroundInput.value;
+
+                // Update preview
+                contrastPreview.style.color = fgColor;
+                contrastPreview.style.backgroundColor = bgColor;
+
+                // Calculate contrast ratio
+                const ratio = calculateContrastRatio(fgColor, bgColor);
+                const formattedRatio = ratio.toFixed(2);
+
+                // Update ratio display
+                contrastRatioValue.textContent = formattedRatio;
+
+                // Update meter (max reasonable ratio is 21:1)
+                const meterPercentage = Math.min(100, (ratio / 21) * 100);
+                contrastRatioMeter.style.width = `${meterPercentage}%`;
+
+                // Determine color for meter based on compliance
+                if (ratio >= WCAG.AAA.smallText) {
+                    contrastRatioMeter.style.backgroundColor = '#4CAF50'; // Green
+                } else if (ratio >= WCAG.AA.smallText) {
+                    contrastRatioMeter.style.backgroundColor = '#eab308'; // Amber
+                } else {
+                    contrastRatioMeter.style.backgroundColor = '#ef4444'; // Red
+                }
+
+                // Update compliance checks
+                updateComplianceResult(aaSmallResult, ratio >= WCAG.AA.smallText);
+                updateComplianceResult(aaLargeResult, ratio >= WCAG.AA.largeText);
+                updateComplianceResult(aaaSmallResult, ratio >= WCAG.AAA.smallText);
+                updateComplianceResult(aaaLargeResult, ratio >= WCAG.AAA.largeText);
+
+                // Generate suggestions
+                generateSuggestions(ratio, fgColor, bgColor);
+            }
+
+            function updateComplianceResult(element, passes) {
+                if (passes) {
+                    element.innerHTML = '<span style="color: #4CAF50;">✓</span>';
+                } else {
+                    element.innerHTML = '<span style="color: #ef4444;">✗</span>';
+                }
+            }
+
+            function generateSuggestions(ratio, fgColor, bgColor) {
+                suggestionSwatches.innerHTML = '';
+
+                if (ratio >= WCAG.AAA.smallText) {
+                    suggestionText.textContent = 'Your color combination has excellent contrast.';
+                    return;
+                }
+
+                if (ratio >= WCAG.AA.smallText) {
+                    suggestionText.textContent = 'Your color combination has good contrast but could be improved for AAA compliance.';
+                } else {
+                    suggestionText.textContent = 'Your color combination needs improvement to meet accessibility standards.';
+                }
+
+                // Generate suggested alternatives
+                const fgRgb = hexToRgb(fgColor);
+                const bgRgb = hexToRgb(bgColor);
+
+                // Determine if we should adjust foreground or background
+                // Generally, it's better to darken light text or lighten dark backgrounds
+                const fgLuminance = calculateLuminance(fgRgb.r, fgRgb.g, fgRgb.b);
+                const bgLuminance = calculateLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
+
+                // Create an array for our suggestions
+                const suggestions = [];
+
+                // 1. Standard adjustments - make text lighter/darker or background lighter/darker
+                if (fgLuminance > bgLuminance) {
+                    // Foreground is lighter than background, make it even lighter
+                    suggestions.push(createSuggestion(adjustColor(fgRgb, 1.2), bgRgb, 'Lighter text'));
+                } else {
+                    // Foreground is darker than background, make it even darker
+                    suggestions.push(createSuggestion(adjustColor(fgRgb, 0.8), bgRgb, 'Darker text'));
+                }
+
+                if (bgLuminance > fgLuminance) {
+                    // Background is lighter than foreground, make it even lighter
+                    suggestions.push(createSuggestion(fgRgb, adjustColor(bgRgb, 1.2), 'Lighter bg'));
+                } else {
+                    // Background is darker than foreground, make it even darker
+                    suggestions.push(createSuggestion(fgRgb, adjustColor(bgRgb, 0.8), 'Darker bg'));
+                }
+
+                // 2. Add more nuanced color adjustments - shift hue slightly while maintaining similar feel
+
+                // For foreground color - shift hue while maintaining similar brightness
+                const fgHsl = rgbToHsl(fgRgb.r, fgRgb.g, fgRgb.b);
+
+                // Slightly adjust hue by 15 degrees
+                const fgHslShifted1 = {
+                    h: (fgHsl.h + 15) % 360,
+                    s: fgHsl.s,
+                    l: fgLuminance > bgLuminance ? Math.min(fgHsl.l * 1.1, 0.95) : Math.max(fgHsl.l * 0.9, 0.05)
+                };
+
+                // Convert back to RGB
+                const fgRgbShifted1 = hslToRgb(fgHslShifted1.h, fgHslShifted1.s, fgHslShifted1.l);
+
+                // For background color - shift hue while maintaining similar brightness
+                const bgHsl = rgbToHsl(bgRgb.r, bgRgb.g, bgRgb.b);
+
+                // Slightly adjust hue by 15 degrees in the opposite direction
+                const bgHslShifted1 = {
+                    h: (bgHsl.h - 15 + 360) % 360,
+                    s: bgHsl.s,
+                    l: bgLuminance > fgLuminance ? Math.min(bgHsl.l * 1.1, 0.95) : Math.max(bgHsl.l * 0.9, 0.05)
+                };
+
+                // Convert back to RGB
+                const bgRgbShifted1 = hslToRgb(bgHslShifted1.h, bgHslShifted1.s, bgHslShifted1.l);
+
+                // Add these new color combinations to our suggestions
+                suggestions.push(createSuggestion(fgRgbShifted1, bgRgb, 'Adjusted text hue'));
+                suggestions.push(createSuggestion(fgRgb, bgRgbShifted1, 'Adjusted bg hue'));
+
+                // 3. Try increasing saturation for more vibrant colors if original colors are not very saturated
+                if (fgHsl.s < 0.5) {
+                    const moreSaturatedFg = {
+                        h: fgHsl.h,
+                        s: Math.min(fgHsl.s + 0.2, 0.8),
+                        l: fgHsl.l
+                    };
+                    const fgRgbSaturated = hslToRgb(moreSaturatedFg.h, moreSaturatedFg.s, moreSaturatedFg.l);
+                    suggestions.push(createSuggestion(fgRgbSaturated, bgRgb, 'More vibrant text'));
+                }
+
+                if (bgHsl.s < 0.5) {
+                    const moreSaturatedBg = {
+                        h: bgHsl.h,
+                        s: Math.min(bgHsl.s + 0.2, 0.8),
+                        l: bgHsl.l
+                    };
+                    const bgRgbSaturated = hslToRgb(moreSaturatedBg.h, moreSaturatedBg.s, moreSaturatedBg.l);
+                    suggestions.push(createSuggestion(fgRgb, bgRgbSaturated, 'More vibrant bg'));
+                }
+
+                // 4. Try complementary colors that still maintain the theme
+                // Shift hue by 180 degrees but adjust luminance to maintain contrast
+                const complementaryFgHsl = {
+                    h: (fgHsl.h + 180) % 360,
+                    s: fgHsl.s,
+                    l: fgLuminance > bgLuminance ? 0.9 : 0.1 // Make it very light or very dark based on original relationship
+                };
+
+                const fgRgbComplementary = hslToRgb(complementaryFgHsl.h, complementaryFgHsl.s, complementaryFgHsl.l);
+                suggestions.push(createSuggestion(fgRgbComplementary, bgRgb, 'Complementary text'));
+
+                // Filter suggestions to only include those that pass at least AA standard
+                const validSuggestions = suggestions.filter(s => s.ratio >= WCAG.AA.smallText)
+                    // Sort by contrast ratio, highest first
+                    .sort((a, b) => b.ratio - a.ratio)
+                    // Take the top suggestions to avoid overwhelming the user
+                    .slice(0, 6);
+
+                // Display suggestions
+                validSuggestions.forEach(suggestion => {
+                    const swatch = document.createElement('div');
+                    swatch.style.position = 'relative';
+                    swatch.style.width = '110px';
+                    swatch.style.borderRadius = '0.375rem';
+                    swatch.style.overflow = 'hidden';
+                    swatch.style.border = '1px solid #333';
+                    swatch.style.cursor = 'pointer';
+                    swatch.style.transition = 'transform 0.2s, box-shadow 0.2s';
+                    swatch.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)';
+
+                    // Add hover effect
+                    swatch.addEventListener('mouseenter', () => {
+                        swatch.style.transform = 'translateY(-2px)';
+                        swatch.style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)';
+                    });
+
+                    swatch.addEventListener('mouseleave', () => {
+                        swatch.style.transform = 'translateY(0)';
+                        swatch.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)';
+                    });
+
+                    const preview = document.createElement('div');
+                    preview.style.padding = '1.25rem 0.5rem';
+                    preview.style.textAlign = 'center';
+                    preview.style.backgroundColor = suggestion.bgHex;
+                    preview.style.color = suggestion.fgHex;
+                    preview.innerHTML = '<span style="font-size: 1.25rem; font-weight: bold;">Aa</span><br><span style="font-size: 0.75rem;">Text</span>';
+
+                    const info = document.createElement('div');
+                    info.style.padding = '0.5rem';
+                    info.style.fontSize = '0.75rem';
+                    info.style.backgroundColor = '#222';
+                    info.style.borderTop = '1px solid #333';
+                    info.style.color = '#ddd';
+
+                    // Add a badge if this meets AAA standards
+                    if (suggestion.ratio >= WCAG.AAA.smallText) {
+                        info.innerHTML = `<span style="color: #4CAF50; font-weight: 600;">${suggestion.ratio.toFixed(2)} AAA</span>`;
+                    } else {
+                        info.innerHTML = `<span style="font-weight: 600;">${suggestion.ratio.toFixed(2)} AA</span>`;
+                    }
+
+                    const type = document.createElement('div');
+                    type.style.fontSize = '0.7rem';
+                    type.style.padding = '0 0.5rem 0.5rem';
+                    type.style.backgroundColor = '#222';
+                    type.style.color = '#999';
+                    type.textContent = suggestion.label;
+
+                    swatch.appendChild(preview);
+                    swatch.appendChild(info);
+                    swatch.appendChild(type);
+
+                    // Add color codes tooltip
+                    const tooltip = document.createElement('div');
+                    tooltip.style.position = 'absolute';
+                    tooltip.style.bottom = '100%';
+                    tooltip.style.left = '50%';
+                    tooltip.style.transform = 'translateX(-50%)';
+                    tooltip.style.backgroundColor = '#111';
+                    tooltip.style.color = '#eee';
+                    tooltip.style.padding = '0.5rem';
+                    tooltip.style.borderRadius = '0.25rem';
+                    tooltip.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+                    tooltip.style.fontSize = '0.75rem';
+                    tooltip.style.whiteSpace = 'nowrap';
+                    tooltip.style.zIndex = '10';
+                    tooltip.style.opacity = '0';
+                    tooltip.style.transition = 'opacity 0.2s';
+                    tooltip.style.pointerEvents = 'none';
+                    tooltip.innerHTML = `Text: ${suggestion.fgHex}<br>Background: ${suggestion.bgHex}`;
+
+                    swatch.addEventListener('mouseenter', () => {
+                        tooltip.style.opacity = '1';
+                    });
+
+                    swatch.addEventListener('mouseleave', () => {
+                        tooltip.style.opacity = '0';
+                    });
+
+                    swatch.appendChild(tooltip);
+
+                    // Add click event to apply this suggestion
+                    swatch.addEventListener('click', () => {
+                        foregroundInput.value = suggestion.fgHex;
+                        backgroundInput.value = suggestion.bgHex;
+                        foregroundPicker.value = suggestion.fgHex;
+                        backgroundPicker.value = suggestion.bgHex;
+                        updateContrastCheck();
+                    });
+
+                    suggestionSwatches.appendChild(swatch);
+                });
+
+                // If we couldn't find any valid suggestions, add a note
+                if (validSuggestions.length === 0) {
+                    suggestionText.textContent = 'Unable to generate suggestions that meet accessibility standards. Try selecting very different colors.';
+                }
+            }
+
+            function createSuggestion(fgRgb, bgRgb, label) {
+                const fgHex = rgbToHex(fgRgb.r, fgRgb.g, fgRgb.b);
+                const bgHex = rgbToHex(bgRgb.r, bgRgb.g, bgRgb.b);
+                const ratio = calculateContrastRatio(fgHex, bgHex);
+
+                return {
+                    fgHex,
+                    bgHex,
+                    ratio,
+                    label
+                };
+            }
+
+            function adjustColor(rgb, factor) {
+                return {
+                    r: clamp(Math.round(rgb.r * factor), 0, 255),
+                    g: clamp(Math.round(rgb.g * factor), 0, 255),
+                    b: clamp(Math.round(rgb.b * factor), 0, 255)
+                };
+            }
+
+            function clamp(value, min, max) {
+                return Math.min(Math.max(value, min), max);
+            }
+
+            // Color Conversion Functions
+            function hexToRgb(hex) {
+                // Remove # if present
+                hex = hex.replace(/^#/, '');
+
+                // Handle shorthand hex
+                if (hex.length === 3) {
+                    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+                }
+
+                const r = parseInt(hex.substring(0, 2), 16);
+                const g = parseInt(hex.substring(2, 4), 16);
+                const b = parseInt(hex.substring(4, 6), 16);
+
+                return { r, g, b };
+            }
+
+            function rgbToHex(r, g, b) {
+                return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+            }
+
+            function componentToHex(c) {
+                const hex = c.toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }
+
+            function rgbToHsl(r, g, b) {
+                r /= 255;
+                g /= 255;
+                b /= 255;
+
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                let h, s, l = (max + min) / 2;
+
+                if (max === min) {
+                    h = s = 0; // achromatic
+                } else {
+                    const d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+                    switch (max) {
+                        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                        case g: h = (b - r) / d + 2; break;
+                        case b: h = (r - g) / d + 4; break;
+                    }
+
+                    h /= 6;
+                }
+
+                return { h: h * 360, s, l };
+            }
+
+            function hslToRgb(h, s, l) {
+                h /= 360;
+                let r, g, b;
+
+                if (s === 0) {
+                    r = g = b = l; // achromatic
+                } else {
+                    const hue2rgb = (p, q, t) => {
+                        if (t < 0) t += 1;
+                        if (t > 1) t -= 1;
+                        if (t < 1 / 6) return p + (q - p) * 6 * t;
+                        if (t < 1 / 2) return q;
+                        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                        return p;
+                    };
+
+                    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                    const p = 2 * l - q;
+
+                    r = hue2rgb(p, q, h + 1 / 3);
+                    g = hue2rgb(p, q, h);
+                    b = hue2rgb(p, q, h - 1 / 3);
+                }
+
+                return {
+                    r: Math.round(r * 255),
+                    g: Math.round(g * 255),
+                    b: Math.round(b * 255)
+                };
+            }
+
+            function calculateLuminance(r, g, b) {
+                // Convert RGB to linear values
+                const rLinear = r / 255;
+                const gLinear = g / 255;
+                const bLinear = b / 255;
+
+                // Convert to sRGB
+                const rSrgb = rLinear <= 0.03928 ? rLinear / 12.92 : Math.pow((rLinear + 0.055) / 1.055, 2.4);
+                const gSrgb = gLinear <= 0.03928 ? gLinear / 12.92 : Math.pow((gLinear + 0.055) / 1.055, 2.4);
+                const bSrgb = bLinear <= 0.03928 ? bLinear / 12.92 : Math.pow((bLinear + 0.055) / 1.055, 2.4);
+
+                // Calculate luminance
+                return 0.2126 * rSrgb + 0.7152 * gSrgb + 0.0722 * bSrgb;
+            }
+
+            function calculateContrastRatio(color1, color2) {
+                const rgb1 = hexToRgb(color1);
+                const rgb2 = hexToRgb(color2);
+
+                const luminance1 = calculateLuminance(rgb1.r, rgb1.g, rgb1.b);
+                const luminance2 = calculateLuminance(rgb2.r, rgb2.g, rgb2.b);
+
+                // Determine lighter and darker luminance
+                const lighter = Math.max(luminance1, luminance2);
+                const darker = Math.min(luminance1, luminance2);
+
+                // Calculate ratio
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+        })();
+
+        // Tooltip functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltip = document.getElementById('tooltip');
+            const tooltipdonation = document.getElementById('tooltipdonation');
+            const iconNavItems = document.querySelectorAll('.custom-nav li img');
+            const donationNavItems = document.querySelectorAll('.donation-nav li img');
+
+            // Main tooltip functionality
+            iconNavItems.forEach(item => {
+                item.addEventListener('mouseenter', function (e) {
+                    const tooltipText = this.getAttribute('data-tooltip');
+                    if (tooltipText) {
+                        tooltip.textContent = tooltipText;
+                        tooltip.style.opacity = '1';
+                        updateTooltipPosition(e, tooltip);
+                    }
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    tooltip.style.opacity = '0';
+                });
+
+                item.addEventListener('mousemove', function (e) {
+                    updateTooltipPosition(e, tooltip);
+                });
             });
+
+            // Donation tooltip functionality
+            donationNavItems.forEach(item => {
+                item.addEventListener('mouseenter', function (e) {
+                    const tooltipText = this.getAttribute('data-tooltip');
+                    if (tooltipText) {
+                        tooltipdonation.textContent = tooltipText;
+                        tooltipdonation.style.opacity = '1';
+                        updateDonationTooltipPosition(e, tooltipdonation);
+                    }
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    tooltipdonation.style.opacity = '0';
+                });
+
+                item.addEventListener('mousemove', function (e) {
+                    updateDonationTooltipPosition(e, tooltipdonation);
+                });
+            });
+
+            function updateTooltipPosition(e, tooltipElement) {
+                const x = e.clientX;
+                const y = e.clientY;
+                tooltipElement.style.left = x + 'px';
+                tooltipElement.style.top = y + 'px';
+            }
+
+            function updateDonationTooltipPosition(e, tooltipElement) {
+                const x = e.clientX;
+                const y = e.clientY;
+                const tooltipWidth = tooltipElement.offsetWidth;
+                tooltipElement.style.left = (x - tooltipWidth - 32) + 'px';
+                tooltipElement.style.top = y + 'px';
+            }
+        });
     </script>
 </body>
 
