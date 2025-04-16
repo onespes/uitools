@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Content Layout</title>
+    <title>Text Case Converter</title>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 
     <style>
         /* Reset defaults and set base styles */
@@ -32,8 +31,6 @@
           background-color: rgba(128, 128, 128, 0.9); /* Slightly darker grey on hover */
         }
 
-
-
         #logotype {
             position: fixed;
             display: flex;
@@ -44,6 +41,7 @@
             font-size: 24px;
             font-weight: 500;
         }
+        
         * {
             margin: 0;
             padding: 0;
@@ -53,7 +51,6 @@
         html, body {
             height: 100%;
             font-family: 'Hanken Grotesk', sans-serif; /* Use Hanken Grotesk font */
-
         }
 
         /* Body background */
@@ -63,7 +60,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 60px ;
+            padding: 0 60px;
         }
 
         /* Container with flexbox for centering */
@@ -81,11 +78,11 @@
 
         /* Content */
         .content {
-            background-color: red;
+            background-color: #1f1f1f;
             max-width: 920px;
             min-height: 100px; /* Adjust as needed */
             padding: 30px;
-            margin: 0 auto ; /* This centers the content horizontally */
+            margin: 0 auto; /* This centers the content horizontally */
             overflow: auto;
             height: 400px; /* Add a fixed height to ensure scrolling */
         }
@@ -203,6 +200,131 @@
             border-style: solid;
             border-color: transparent transparent transparent rgba(200, 180, 150, 0.3); /* Adjust the arrow color */
         }
+
+        /* New styles for the Text Case Converter */
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin: 30px 0 15px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        textarea, 
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #2a2a2a;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+            resize: none;
+        }
+        
+        textarea:focus,
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(145, 164, 200, 0.5);
+        }
+        
+        #input-stats {
+            font-size: 12px;
+            color: #777;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .output-box {
+            background-color: #2a2a2a;
+            padding: 12px;
+            border-radius: 4px;
+            min-height: 40px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        button {
+            background-color: transparent;
+            border: none;
+            color: #999;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+        
+        button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .case-section {
+            margin-bottom: 30px;
+        }
+        
+        /* Citation styles section */
+        .citation-styles {
+            margin-top: 40px;
+        }
+        
+        .citation-styles h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        
+        .citation-item {
+            margin-bottom: 25px;
+        }
+        
+        .citation-item h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .citation-title {
+            display: flex;
+            align-items: center;
+        }
+        
+        .citation-subtitle {
+            color: #888;
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -211,9 +333,9 @@
 
     <ul class="custom-nav">
         <li><img src="icon-contrast.svg" alt="Contrast checker" class="icon-contrast" data-tooltip="Check Contrast"></li>
-        <li><img src="icon-capitalization.svg" alt="Capitalization" class="icon-capitalization" data-tooltip="Capitalization Tools"></li>
         <li><img src="icon-textspace.svg" alt="Text space" class="icon-textspace" data-tooltip="Text Spacing"></li>
         <li><img src="icon-figma.svg" alt="Figma examples" class="icon-figma" data-tooltip="Figma Examples"></li>
+        <li><img src="icon-capitalization.svg" alt="Capitalization" class="icon-capitalization" data-tooltip="Capitalization Tools"></li>
         <li><img src="icon-grid.svg" alt="Grid system" class="icon-grid" data-tooltip="Grid System"></li>
         <li><img src="icon-question.svg" alt="Have a question" class="icon-question" data-tooltip="Help & FAQ"></li>
     </ul>
@@ -231,73 +353,119 @@
         <div class="content" id="scrollContent">
             <!-- The custom scrollbar will be added via JavaScript -->
             <h1>Text Case Converter</h1>
-            <p>Type or paste your text below to see it transformed into different case formats in real-time.</p>
+            <p>Enter your text below</p>
             
-            <div class="mb-6">
-                <label for="input-text">Input Text</label>
+            <div class="section">
                 <textarea id="input-text" rows="5" placeholder="Enter your text here..."></textarea>
-                <div class="stats" id="input-stats"></div>
+                <div id="input-stats">0 characters, 0 words</div>
             </div>
     
+            <h2>Common styles</h2>
+            <p>Enter example words like proper-nouns (comma-separated)</p>
+            
             <!-- Title Case -->
-            <div class="case-container">
-                <h2 class="flex justify-between items-center">
-                    Title Case
-                    <button class="copy-btn secondary" data-target="title-case-output">
-                        <i class="far fa-copy mr-1"></i> Copy
+            <div class="case-section">
+                <h3>
+                    Title case
+                    <button id="copy-title" data-target="title-case-output">
+                        Copy
                     </button>
-                </h2>
-                <div id="title-case-output" class="output-text"></div>
-                
-                <label for="title-case-excludes">Words to exclude (comma-separated)</label>
-                <textarea id="title-case-excludes" rows="2" placeholder="Words to keep in their original case...">a, an, and, as, at, but, by, for, in, nor, of, on, or, so, the, to, up, yet</textarea>
+                </h3>
+                <div id="title-case-output" class="output-box">Results Will Appear Here</div>
             </div>
     
             <!-- Sentence Case -->
-            <div class="case-container">
-                <h2 class="flex justify-between items-center">
-                    Sentence Case
-                    <button class="copy-btn secondary" data-target="sentence-case-output">
-                        <i class="far fa-copy mr-1"></i> Copy
+            <div class="case-section">
+                <h3>
+                    Sentence case
+                    <button id="copy-sentence" data-target="sentence-case-output">
+                        Copy
                     </button>
-                </h2>
-                <div id="sentence-case-output" class="output-text"></div>
-                
-                <label for="sentence-case-excludes">Words to exclude (comma-separated)</label>
-                <textarea id="sentence-case-excludes" rows="2" placeholder="Words to keep in their original case...">I, Mr, Mrs, Dr, Ms, Jr, Sr, USA, UK, EU, UN</textarea>
+                </h3>
+                <div id="sentence-case-output" class="output-box">Results will appear here</div>
             </div>
     
             <!-- Upper Case -->
-            <div class="case-container">
-                <h2 class="flex justify-between items-center">
-                    Upper Case
-                    <button class="copy-btn secondary" data-target="upper-case-output">
-                        <i class="far fa-copy mr-1"></i> Copy
+            <div class="case-section">
+                <h3>
+                    Upper case
+                    <button id="copy-upper" data-target="upper-case-output">
+                        Copy
                     </button>
-                </h2>
-                <div id="upper-case-output" class="output-text"></div>
-                
-                <label for="upper-case-excludes">Words to exclude (comma-separated)</label>
-                <textarea id="upper-case-excludes" rows="2" placeholder="Words to keep in their original case...">PhD, iOS, iPhone, macOS, NASA, SQL</textarea>
+                </h3>
+                <div id="upper-case-output" class="output-box">RESULTS WILL APPEAR HERE</div>
             </div>
     
             <!-- Lower Case -->
-            <div class="case-container">
-                <h2 class="flex justify-between items-center">
-                    Lower Case
-                    <button class="copy-btn secondary" data-target="lower-case-output">
-                        <i class="far fa-copy mr-1"></i> Copy
+            <div class="case-section">
+                <h3>
+                    Lower case
+                    <button id="copy-lower" data-target="lower-case-output">
+                        Copy
                     </button>
-                </h2>
-                <div id="lower-case-output" class="output-text"></div>
+                </h3>
+                <div id="lower-case-output" class="output-box">results will appear here</div>
+            </div>
+            
+            <!-- Citation styles section -->
+            <div class="citation-styles">
+                <h2>Citation styles</h2>
                 
-                <label for="lower-case-excludes">Words to exclude (comma-separated)</label>
-                <textarea id="lower-case-excludes" rows="2" placeholder="Words to keep in their original case...">iOS, pH, mRNA, dB</textarea>
+                <!-- AP Style -->
+                <div class="citation-item">
+                    <h3>
+                        <div class="citation-title">
+                            AP style <span class="citation-subtitle">(Associated Press)</span>
+                        </div>
+                        <button id="copy-ap" data-target="ap-style-output">
+                            Copy
+                        </button>
+                    </h3>
+                    <div id="ap-style-output" class="output-box">results will appear here</div>
+                </div>
+                
+                <!-- APA Style -->
+                <div class="citation-item">
+                    <h3>
+                        <div class="citation-title">
+                            APA style <span class="citation-subtitle">(American Psychological Association)</span>
+                        </div>
+                        <button id="copy-apa" data-target="apa-style-output">
+                            Copy
+                        </button>
+                    </h3>
+                    <div id="apa-style-output" class="output-box">results will appear here</div>
+                </div>
+                
+                <!-- MLA Style -->
+                <div class="citation-item">
+                    <h3>
+                        <div class="citation-title">
+                            MLA style <span class="citation-subtitle">(Modern Language Association)</span>
+                        </div>
+                        <button id="copy-mla" data-target="mla-style-output">
+                            Copy
+                        </button>
+                    </h3>
+                    <div id="mla-style-output" class="output-box">results will appear here</div>
+                </div>
+                
+                <!-- Chicago Style -->
+                <div class="citation-item">
+                    <h3>
+                        <div class="citation-title">
+                            Chicago style <span class="citation-subtitle">(University of Chicago Press)</span>
+                        </div>
+                        <button id="copy-chicago" data-target="chicago-style-output">
+                            Copy
+                        </button>
+                    </h3>
+                    <div id="chicago-style-output" class="output-box">results will appear here</div>
+                </div>
             </div>
         </div>
     </div>
 
-    
     <!-- Text transformation functionality -->
     <script>
         // Text transformation functionality
@@ -305,19 +473,18 @@
         const inputStats = document.getElementById('input-stats');
         
         const titleCaseOutput = document.getElementById('title-case-output');
-        const titleCaseExcludes = document.getElementById('title-case-excludes');
-        
         const sentenceCaseOutput = document.getElementById('sentence-case-output');
-        const sentenceCaseExcludes = document.getElementById('sentence-case-excludes');
-        
         const upperCaseOutput = document.getElementById('upper-case-output');
-        const upperCaseExcludes = document.getElementById('upper-case-excludes');
-        
         const lowerCaseOutput = document.getElementById('lower-case-output');
-        const lowerCaseExcludes = document.getElementById('lower-case-excludes');
+        
+        // Citation style outputs
+        const apStyleOutput = document.getElementById('ap-style-output');
+        const apaStyleOutput = document.getElementById('apa-style-output');
+        const mlaStyleOutput = document.getElementById('mla-style-output');
+        const chicagoStyleOutput = document.getElementById('chicago-style-output');
 
-        // Copy buttons
-        const copyButtons = document.querySelectorAll('.copy-btn');
+        // Get all copy buttons
+        const copyButtons = document.querySelectorAll('button[data-target]');
         
         // Transform text function
         function transformText() {
@@ -333,24 +500,35 @@
             applySentenceCase(text);
             applyUpperCase(text);
             applyLowerCase(text);
+            
+            // Apply citation styles
+            applyAPStyle(text);
+            applyAPAStyle(text);
+            applyMLAStyle(text);
+            applyChicagoStyle(text);
         }
         
         // Title Case
         function applyTitleCase(text) {
             if (!text) {
-                titleCaseOutput.textContent = '';
+                titleCaseOutput.textContent = 'Results Will Appear Here';
                 return;
             }
             
-            const excludedWords = parseExcludedWords(titleCaseExcludes.value);
+            const excludedWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet'];
             const words = text.split(/\b/);
             
-            const result = words.map(word => {
+            const result = words.map((word, index) => {
                 if (!word.trim()) return word;
                 
+                // Always capitalize the first and last word
+                if ((index === 0 || index === words.length - 1) && word.trim()) {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }
+                
                 // Check if the word should be excluded from transformation
-                if (excludedWords.has(word.toLowerCase())) {
-                    return word;
+                if (excludedWords.includes(word.toLowerCase())) {
+                    return word.toLowerCase();
                 }
                 
                 // For normal words, capitalize the first letter
@@ -363,11 +541,9 @@
         // Sentence Case
         function applySentenceCase(text) {
             if (!text) {
-                sentenceCaseOutput.textContent = '';
+                sentenceCaseOutput.textContent = 'Results will appear here';
                 return;
             }
-            
-            const excludedWords = parseExcludedWords(sentenceCaseExcludes.value);
             
             // First, lowercase everything
             let result = text.toLowerCase();
@@ -377,104 +553,117 @@
                 return p1 + p2.toUpperCase();
             });
             
-            // Restore excluded words
-            excludedWords.forEach(word => {
-                const regex = new RegExp(`\\b${word.toLowerCase()}\\b`, 'gi');
-                result = result.replace(regex, word);
-            });
-            
             sentenceCaseOutput.textContent = result;
         }
         
         // Upper Case
         function applyUpperCase(text) {
             if (!text) {
-                upperCaseOutput.textContent = '';
+                upperCaseOutput.textContent = 'RESULTS WILL APPEAR HERE';
                 return;
             }
             
-            const excludedWords = parseExcludedWords(upperCaseExcludes.value);
-            
-            // Store excluded words with their positions
-            const excludedPositions = [];
-            let tempText = text;
-            
-            excludedWords.forEach(word => {
-                const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, 'g');
-                let match;
-                while ((match = regex.exec(tempText)) !== null) {
-                    excludedPositions.push({
-                        start: match.index,
-                        end: match.index + word.length,
-                        word: word
-                    });
-                }
-            });
-            
-            // Convert to uppercase
-            let result = text.toUpperCase();
-            
-            // Restore excluded words (starting from the end to maintain positions)
-            excludedPositions.sort((a, b) => b.start - a.start);
-            excludedPositions.forEach(pos => {
-                result = result.substring(0, pos.start) + pos.word + result.substring(pos.end);
-            });
-            
-            upperCaseOutput.textContent = result;
+            upperCaseOutput.textContent = text.toUpperCase();
         }
         
         // Lower Case
         function applyLowerCase(text) {
             if (!text) {
-                lowerCaseOutput.textContent = '';
+                lowerCaseOutput.textContent = 'results will appear here';
                 return;
             }
             
-            const excludedWords = parseExcludedWords(lowerCaseExcludes.value);
+            lowerCaseOutput.textContent = text.toLowerCase();
+        }
+        
+        // AP Style (Associated Press)
+        function applyAPStyle(text) {
+            if (!text) {
+                apStyleOutput.textContent = 'results will appear here';
+                return;
+            }
             
-            // Store excluded words with their positions
-            const excludedPositions = [];
-            let tempText = text;
+            // Basic AP style rules (simplified)
+            let result = text;
             
-            excludedWords.forEach(word => {
-                const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, 'g');
-                let match;
-                while ((match = regex.exec(tempText)) !== null) {
-                    excludedPositions.push({
-                        start: match.index,
-                        end: match.index + word.length,
-                        word: word
-                    });
+            // Use figures for numbers 10 and above
+            result = result.replace(/\b(\d+)\b/g, (match, number) => {
+                const num = parseInt(number);
+                if (num >= 10) return number;
+                return ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][num] || number;
+            });
+            
+            // Use % symbol instead of "percent"
+            result = result.replace(/\b(\d+)\s+percent\b/gi, '$1%');
+            
+            apStyleOutput.textContent = result;
+        }
+        
+        // APA Style (American Psychological Association)
+        function applyAPAStyle(text) {
+            if (!text) {
+                apaStyleOutput.textContent = 'results will appear here';
+                return;
+            }
+            
+            // Basic APA style rules (simplified)
+            let result = text;
+            
+            // Use "&" for citations
+            result = result.replace(/\band\b/gi, '&');
+            
+            // Capitalize first letter of first word after a colon
+            result = result.replace(/:\s*([a-z])/g, (match, letter) => {
+                return ': ' + letter.toUpperCase();
+            });
+            
+            apaStyleOutput.textContent = result;
+        }
+        
+        // MLA Style (Modern Language Association)
+        function applyMLAStyle(text) {
+            if (!text) {
+                mlaStyleOutput.textContent = 'results will appear here';
+                return;
+            }
+            
+            // Basic MLA style rules (simplified)
+            let result = text;
+            
+            // Spell out numbers that can be written in one or two words
+            result = result.replace(/\b(\d+)\b/g, (match, number) => {
+                const num = parseInt(number);
+                if (num <= 100 || num % 100 === 0) {
+                    const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+                    return words[num] || number;
                 }
+                return number;
             });
             
-            // Convert to lowercase
-            let result = text.toLowerCase();
+            mlaStyleOutput.textContent = result;
+        }
+        
+        // Chicago Style (University of Chicago Press)
+        function applyChicagoStyle(text) {
+            if (!text) {
+                chicagoStyleOutput.textContent = 'results will appear here';
+                return;
+            }
             
-            // Restore excluded words (starting from the end to maintain positions)
-            excludedPositions.sort((a, b) => b.start - a.start);
-            excludedPositions.forEach(pos => {
-                result = result.substring(0, pos.start) + pos.word + result.substring(pos.end);
+            // Basic Chicago style rules (simplified)
+            let result = text;
+            
+            // Spell out numbers from one through one hundred
+            result = result.replace(/\b(\d+)\b/g, (match, number) => {
+                const num = parseInt(number);
+                if (num <= 100) {
+                    const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+                    return words[num] || number;
+                }
+                return number;
             });
             
-            lowerCaseOutput.textContent = result;
-        }
-        
-        // Parse excluded words into a Set for faster lookups
-        function parseExcludedWords(excludesText) {
-            if (!excludesText.trim()) return new Set();
-            
-            return new Set(
-                excludesText
-                    .split(',')
-                    .map(word => word.trim())
-                    .filter(word => word !== '')
-            );
-        }
-        
-        // Escape special characters in strings for regex
-        function escapeRegExp(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            chicagoStyleOutput.textContent = result;
         }
         
         // Copy functionality
@@ -484,10 +673,10 @@
                 const textToCopy = document.getElementById(targetId).textContent;
                 
                 navigator.clipboard.writeText(textToCopy).then(() => {
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-check mr-1"></i> Copied!';
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
                     setTimeout(() => {
-                        this.innerHTML = originalText;
+                        this.textContent = originalText;
                     }, 2000);
                 });
             });
@@ -495,10 +684,6 @@
         
         // Event listeners
         inputText.addEventListener('input', transformText);
-        titleCaseExcludes.addEventListener('input', transformText);
-        sentenceCaseExcludes.addEventListener('input', transformText);
-        upperCaseExcludes.addEventListener('input', transformText);
-        lowerCaseExcludes.addEventListener('input', transformText);
         
         // Initial transformation (if there's any default text)
         transformText();
@@ -575,30 +760,6 @@
                 item.addEventListener('mousemove', (e) => updateTooltipPosition(e, tooltipdonation));
             });
         });
-
-
-
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-  const scrollContainer = document.querySelector('.scroll-container');
-  let scrollTimer;
-  
-  scrollContainer.addEventListener('scroll', function() {
-    // Show scrollbar
-    scrollContainer.classList.add('scrolling');
-    
-    // Clear the previous timer
-    clearTimeout(scrollTimer);
-    
-    // Set a new timer to hide the scrollbar after scrolling stops
-    scrollTimer = setTimeout(function() {
-      scrollContainer.classList.remove('scrolling');
-    }, 1000); // Adjust timeout as needed (1 second in this example)
-  });
-});
-
     </script>
 </body>
 </html>
