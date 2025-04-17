@@ -4,328 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Case Converter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <style>
-        /* Reset defaults and set base styles */
-
-        /* Make the scrollbar track transparent */
-        ::-webkit-scrollbar {
-          width: 8px;  /* Adjust width as needed */
-          height: 8px; /* Adjust height for horizontal scrollbar */
-        }
-
-        /* Style the scrollbar track (background) */
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        /* Style the scrollbar thumb (the draggable part) */
-        ::-webkit-scrollbar-thumb {
-          background-color: rgba(128, 128, 128, 0.7); /* Grey color with 70% opacity */
-          border-radius: 10px; /* Optional: rounded corners for the thumb */
-        }
-
-        /* Optional: Add a hover effect to make the thumb a little darker when hovered */
-        ::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(128, 128, 128, 0.9); /* Slightly darker grey on hover */
-        }
-
-        #logotype {
-            position: fixed;
-            display: flex;
-            top: 20px;
-            left: 68px;
-            align-items: center;
-            width: auto;
-            font-size: 24px;
-            font-weight: 500;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            font-family: 'Hanken Grotesk', sans-serif; /* Use Hanken Grotesk font */
-        }
-
-        /* Body background */
-        body {
-            background-color: #1d1d1d;
-            color: #f1f2f3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 60px;
-        }
-
-        /* Container with flexbox for centering */
-        .container {
-            background-color: #1f1f1f;
-            width: 100%;
-            height: calc(100% - 120px);
-            border-radius: 4px;
-            padding: 24px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Content */
-        .content {
-            background-color: #1f1f1f;
-            max-width: 920px;
-            min-height: 100px; /* Adjust as needed */
-            padding: 30px;
-            margin: 0 auto; /* This centers the content horizontally */
-            overflow: auto;
-            height: 400px; /* Add a fixed height to ensure scrolling */
-        }
-
-        .xpd-logo {
-            position: fixed;
-            top: 20px;
-            left: 12px;
-        }
-
-        .donation-nav {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            list-style-type: none; /* Remove default bullet points */
-            padding: 0;            /* Remove default padding */
-            margin: 0;             /* Remove default margin */
-        }
-
-        .donation-nav li {
-            display: flex;         /* Use flexbox for alignment */
-            align-items: center;   /* Center items vertically */
-            padding: 0px;         /* Add some padding */
-            margin: 0 0 16px;
-        }
-
-        .donation-nav li:hover {
-            cursor: pointer;
-        }
-
-        .custom-nav {
-            position: fixed;
-            top: 76px;
-            left: 12px;
-            list-style-type: none; /* Remove default bullet points */
-            padding: 0;            /* Remove default padding */
-            margin: 0;             /* Remove default margin */
-            width: 60px;
-        }
-
-        .custom-nav li {
-            display: flex;         /* Use flexbox for alignment */
-            align-items: center;   /* Center items vertically */
-            padding: 0px;         /* Add some padding */
-            margin: 0 0 16px;
-        }
-
-        .custom-nav li:hover {
-            cursor: pointer;
-        }
-
-        .icon-contrast, .icon-coffee, .icon-capitalization, .icon-textspace, .icon-figma, .icon-grid, .icon-question {
-            transition: opacity .3s;
-            opacity: 0.5;
-        }
-
-        .icon-contrast:hover, .icon-coffee:hover, .icon-capitalization:hover, .icon-textspace:hover, .icon-figma:hover, .icon-grid:hover, .icon-question:hover, .icon-contrast:hover {
-            opacity: 1;
-        }
-
-        /* Tooltip styling */
-        #tooltip {
-            position: fixed;
-            background-color: rgba(145, 164, 200, 0.3);
-            color: white;
-            padding: 10px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            z-index: 1000;
-            white-space: nowrap;
-            transform: translate(16px, -10px); /* Offset from cursor */
-            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Add a small arrow to the tooltip */
-        #tooltip:after {
-            content: "";
-            position: absolute;
-            left: -8px;
-            top: 25%;
-            transform: translateY(-50%);
-            border-width: 5px 8px 6px 0;
-            border-style: solid;
-            border-color: transparent rgba(145, 164, 200, 0.3) transparent transparent;
-        }
-
-        /* Tooltip-donation styling */
-        #tooltipdonation {
-            position: fixed;
-            background-color: rgba(200, 180, 150, 0.3);
-            color: white;
-            padding: 10px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            z-index: 1000;
-            white-space: nowrap;
-            transform: translate(16px, -10px); /* Offset from cursor */
-            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Add a small arrow to the tooltip */
-        #tooltipdonation:after {
-            content: "";
-            position: absolute;
-            right: -8px; /* Position the arrow on the right side of the tooltip */
-            top: 25%; /* Vertically center the arrow */
-            transform: translateY(-50%);
-            border-width: 5px 0 6px 8px; /* Arrow pointing to the left */
-            border-style: solid;
-            border-color: transparent transparent transparent rgba(200, 180, 150, 0.3); /* Adjust the arrow color */
-        }
-
-        /* New styles for the Text Case Converter */
-        h1 {
-            font-size: 28px;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-        
-        h2 {
-            font-size: 18px;
-            margin: 30px 0 15px;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #aaa;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #aaa;
-        }
-        
-        textarea, 
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            background-color: #2a2a2a;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 14px;
-            resize: none;
-        }
-        
-        textarea:focus,
-        input[type="text"]:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(145, 164, 200, 0.5);
-        }
-        
-        #input-stats {
-            font-size: 12px;
-            color: #777;
-            margin-top: -10px;
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        
-        .output-box {
-            background-color: #2a2a2a;
-            padding: 12px;
-            border-radius: 4px;
-            min-height: 40px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            color: #ddd;
-        }
-        
-        button {
-            background-color: transparent;
-            border: none;
-            color: #999;
-            font-size: 12px;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 3px;
-            transition: all 0.2s;
-        }
-        
-        button:hover {
-            background-color: #333;
-            color: #fff;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .case-section {
-            margin-bottom: 30px;
-        }
-        
-        /* Citation styles section */
-        .citation-styles {
-            margin-top: 40px;
-        }
-        
-        .citation-styles h2 {
-            font-size: 24px;
-            margin-bottom: 25px;
-        }
-        
-        .citation-item {
-            margin-bottom: 25px;
-        }
-        
-        .citation-item h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .citation-title {
-            display: flex;
-            align-items: center;
-        }
-        
-        .citation-subtitle {
-            color: #888;
-            font-size: 14px;
-            font-weight: normal;
-            margin-left: 5px;
-        }
-    </style>
+   
 </head>
 <body>
     <img src="xpd-logo.svg" alt="Company Logo" class="xpd-logo"> 
@@ -353,114 +37,128 @@
         <div class="content" id="scrollContent">
             <!-- The custom scrollbar will be added via JavaScript -->
             <h1>Text Case Converter</h1>
-            <p>Enter your text below</p>
+            <label>Enter your text below</label>
             
             <div class="section">
                 <textarea id="input-text" rows="5" placeholder="Enter your text here..."></textarea>
                 <div id="input-stats">0 characters, 0 words</div>
             </div>
+            
+            <label>Keep capitalization for these words (comma-separated)</label>
+            
+            <div class="section">
+                <textarea id="input-text" rows="1" placeholder="Enter your override words..."></textarea>
+                <div id="input-stats">0 words</div>
+            </div>
     
             <h2>Common styles</h2>
-            <p>Enter example words like proper-nouns (comma-separated)</p>
             
             <!-- Title Case -->
-            <div class="case-section">
+            <div class="style-item">
                 <h3>
-                    Title case
-                    <button id="copy-title" data-target="title-case-output">
+                    <div class="style-title">
+                        Title case
+                    </div>
+                    <button id="copy-ap" data-target="title-case-output">
                         Copy
                     </button>
                 </h3>
-                <div id="title-case-output" class="output-box">Results Will Appear Here</div>
+                <div id="title-case-output" class="output-box">&nbsp;</div>
             </div>
     
             <!-- Sentence Case -->
-            <div class="case-section">
+            <div class="style-item">
                 <h3>
-                    Sentence case
+                    <div class="style-title">
+                        Sentence case
+                    </div>
                     <button id="copy-sentence" data-target="sentence-case-output">
                         Copy
                     </button>
                 </h3>
-                <div id="sentence-case-output" class="output-box">Results will appear here</div>
+                <div id="sentence-case-output" class="output-box">&nbsp;</div>
             </div>
     
             <!-- Upper Case -->
-            <div class="case-section">
+            <div class="style-item">
                 <h3>
-                    Upper case
+                    <div class="style-title">
+                        Upper case
+                    </div>
                     <button id="copy-upper" data-target="upper-case-output">
                         Copy
                     </button>
                 </h3>
-                <div id="upper-case-output" class="output-box">RESULTS WILL APPEAR HERE</div>
+                <div id="upper-case-output" class="output-box">&nbsp;</div>
             </div>
     
             <!-- Lower Case -->
-            <div class="case-section">
+            <div class="style-item">
                 <h3>
-                    Lower case
+                    <div class="style-title">
+                        Lower case
+                    </div>
                     <button id="copy-lower" data-target="lower-case-output">
                         Copy
                     </button>
                 </h3>
-                <div id="lower-case-output" class="output-box">results will appear here</div>
+                <div id="lower-case-output" class="output-box">&nbsp;</div>
             </div>
             
             <!-- Citation styles section -->
-            <div class="citation-styles">
+            <div>
                 <h2>Citation styles</h2>
                 
                 <!-- AP Style -->
-                <div class="citation-item">
+                <div class="style-item">
                     <h3>
-                        <div class="citation-title">
-                            AP style <span class="citation-subtitle">(Associated Press)</span>
+                        <div class="style-title">
+                            AP style <span class="style-description">Associated Press</span>
                         </div>
                         <button id="copy-ap" data-target="ap-style-output">
                             Copy
                         </button>
                     </h3>
-                    <div id="ap-style-output" class="output-box">results will appear here</div>
+                    <div id="ap-style-output" class="output-box">&nbsp;</div>
                 </div>
                 
                 <!-- APA Style -->
-                <div class="citation-item">
+                <div class="style-item">
                     <h3>
-                        <div class="citation-title">
-                            APA style <span class="citation-subtitle">(American Psychological Association)</span>
+                        <div class="style-title">
+                            APA style <span class="style-description">American Psychological Association</span>
                         </div>
                         <button id="copy-apa" data-target="apa-style-output">
                             Copy
                         </button>
                     </h3>
-                    <div id="apa-style-output" class="output-box">results will appear here</div>
+                    <div id="apa-style-output" class="output-box">&nbsp;</div>
                 </div>
                 
                 <!-- MLA Style -->
-                <div class="citation-item">
+                <div class="style-item">
                     <h3>
-                        <div class="citation-title">
-                            MLA style <span class="citation-subtitle">(Modern Language Association)</span>
+                        <div class="style-title">
+                            MLA style <span class="style-description">Modern Language Association</span>
                         </div>
                         <button id="copy-mla" data-target="mla-style-output">
                             Copy
                         </button>
                     </h3>
-                    <div id="mla-style-output" class="output-box">results will appear here</div>
+                    <div id="mla-style-output" class="output-box">&nbsp;</div>
                 </div>
                 
                 <!-- Chicago Style -->
-                <div class="citation-item">
+                <div class="style-item">
                     <h3>
-                        <div class="citation-title">
-                            Chicago style <span class="citation-subtitle">(University of Chicago Press)</span>
+                        <div class="style-title">
+                            Chicago style <span class="style-description">University of Chicago Press</span>
                         </div>
                         <button id="copy-chicago" data-target="chicago-style-output">
                             Copy
                         </button>
                     </h3>
-                    <div id="chicago-style-output" class="output-box">results will appear here</div>
+                    <div id="chicago-style-output" class="output-box">&nbsp;</div>
                 </div>
             </div>
         </div>
@@ -511,7 +209,7 @@
         // Title Case
         function applyTitleCase(text) {
             if (!text) {
-                titleCaseOutput.textContent = 'Results Will Appear Here';
+                titleCaseOutput.textContent = '';
                 return;
             }
             
@@ -541,7 +239,7 @@
         // Sentence Case
         function applySentenceCase(text) {
             if (!text) {
-                sentenceCaseOutput.textContent = 'Results will appear here';
+                sentenceCaseOutput.textContent = '';
                 return;
             }
             
@@ -559,7 +257,7 @@
         // Upper Case
         function applyUpperCase(text) {
             if (!text) {
-                upperCaseOutput.textContent = 'RESULTS WILL APPEAR HERE';
+                upperCaseOutput.textContent = '';
                 return;
             }
             
@@ -569,7 +267,7 @@
         // Lower Case
         function applyLowerCase(text) {
             if (!text) {
-                lowerCaseOutput.textContent = 'results will appear here';
+                lowerCaseOutput.textContent = '';
                 return;
             }
             
@@ -579,7 +277,7 @@
         // AP Style (Associated Press)
         function applyAPStyle(text) {
             if (!text) {
-                apStyleOutput.textContent = 'results will appear here';
+                apStyleOutput.textContent = '';
                 return;
             }
             
@@ -602,7 +300,7 @@
         // APA Style (American Psychological Association)
         function applyAPAStyle(text) {
             if (!text) {
-                apaStyleOutput.textContent = 'results will appear here';
+                apaStyleOutput.textContent = '';
                 return;
             }
             
@@ -623,7 +321,7 @@
         // MLA Style (Modern Language Association)
         function applyMLAStyle(text) {
             if (!text) {
-                mlaStyleOutput.textContent = 'results will appear here';
+                mlaStyleOutput.textContent = '';
                 return;
             }
             
@@ -646,7 +344,7 @@
         // Chicago Style (University of Chicago Press)
         function applyChicagoStyle(text) {
             if (!text) {
-                chicagoStyleOutput.textContent = 'results will appear here';
+                chicagoStyleOutput.textContent = '';
                 return;
             }
             
