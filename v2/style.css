@@ -55,8 +55,8 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
 
   .xpd-logo {
     position: fixed;
-    top: 20px;
-    left: 12px;
+    top: 17px;
+    left: 10px;
   }
 
   .donation-nav, .custom-nav {
@@ -72,7 +72,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   }
 
   .custom-nav {
-    top: 76px;
+    top: 64px;
     left: 12px;
     width: 60px;
   }
@@ -81,7 +81,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   .custom-nav li {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     cursor: pointer;
   }
 
@@ -151,39 +151,27 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   }
 
   #tooltip {
-    background-color: rgba(145, 164, 200, 0.3);
+    background-color: rgba(236, 104, 200, 0.5);
   }
 
   #tooltipdonation {
-    background-color: rgba(200, 180, 150, 0.3);
+    background-color: rgba(236, 104, 200, 0.5);
   }
 
-  #tooltip:after,
-  #tooltipdonation:after {
-    content: "";
-    position: absolute;
-    top: 25%;
-    transform: translateY(-50%);
-    border-style: solid;
-  }
 
-  #tooltip:after {
-    left: -8px;
-    border-width: 5px 8px 6px 0;
-    border-color: transparent rgba(145, 164, 200, 0.3) transparent transparent;
-  }
+  
 
   #tooltipdonation:after {
     right: -8px;
     border-width: 5px 0 6px 8px;
-    border-color: transparent transparent transparent rgba(200, 180, 150, 0.3);
+    border-color: transparent transparent transparent rgba(236, 104, 200, 0.5);
   }
 
   /* Text Case Converter Styles */
   
   h1 {
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: 52px;
+  font-size: 40px;
   font-weight: 700;
   margin-top: 12px;
 }
@@ -191,7 +179,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
 
   h2 {
     color: #a1a2a3;
-    font-size: 40px;
+    font-size: 32px;
     margin: 56px 0 32px;
     font-weight: 400;
     display: flex;
