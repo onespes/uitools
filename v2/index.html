@@ -1,30 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Case Converter</title>
-    <link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-   
-</head>
-<body>
-    <img src="xpd-logo.svg" alt="Xperience Design logo" class="xpd-logo">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img src="xpd-logo.svg" alt="Xperience Design logo" class="xpd-logo" />
 
     <ul class="custom-nav">
-        <li><a href="./color-contrast.html"><img src="icon-contrast.svg" alt="Contrast checker" class="icon-contrast" data-tooltip="Check Contrast"></a></li>
-        <li><a href="./index.html"><img src="icon-textspace.svg" alt="Text space" class="icon-textspace" data-tooltip="Text Spacing"></a></li>
-        <li><img src="icon-figma.svg" alt="Figma examples" class="icon-figma" data-tooltip="Figma Examples"></li>
-        <li><img src="icon-capitalization.svg" alt="Capitalization" class="icon-capitalization" data-tooltip="Capitalization Tools"></li>
-        <li><img src="icon-grid.svg" alt="Grid system" class="icon-grid" data-tooltip="Grid System"></li>
-        <li><img src="icon-question.svg" alt="Have a question" class="icon-question" data-tooltip="Help & FAQ"></li>
+      <li>
+        <a href="./color-contrast.html"
+          ><img
+            src="icon-contrast.svg"
+            alt="Contrast checker"
+            class="icon-contrast"
+            data-tooltip="Check Contrast"
+        /></a>
+      </li>
+      <li>
+        <a href="./index.html"
+          ><img
+            src="icon-textspace.svg"
+            alt="Text space"
+            class="icon-textspace"
+            data-tooltip="Text Spacing"
+        /></a>
+      </li>
+      <li>
+        <img
+          src="icon-figma.svg"
+          alt="Figma examples"
+          class="icon-figma"
+          data-tooltip="Figma Examples"
+        />
+      </li>
+      <li>
+        <img
+          src="icon-capitalization.svg"
+          alt="Capitalization"
+          class="icon-capitalization"
+          data-tooltip="Capitalization Tools"
+        />
+      </li>
+      <li>
+        <img
+          src="icon-grid.svg"
+          alt="Grid system"
+          class="icon-grid"
+          data-tooltip="Grid System"
+        />
+      </li>
+      <li>
+        <img
+          src="icon-question.svg"
+          alt="Have a question"
+          class="icon-question"
+          data-tooltip="Help & FAQ"
+        />
+      </li>
     </ul>
 
     <ul class="donation-nav">
-        <li><img src="icon-coffee.svg" alt="Buy me coffee" class="icon-coffee" data-tooltip="Buy Me Coffee"></li>
+      <li>
+        <img
+          src="icon-coffee.svg"
+          alt="Buy me coffee"
+          class="icon-coffee"
+          data-tooltip="Buy Me Coffee"
+        />
+      </li>
     </ul>
 
     <!-- Add the tooltip element for the general tooltip -->
@@ -33,430 +85,574 @@
     <div id="tooltipdonation"></div>
 
     <div class="container">
-        <div class="content" id="scrollContent">
-            <!-- The custom scrollbar will be added via JavaScript -->
-            <h1>Text Case Converter</h1>
-            <label>Enter your text below</label>
-            
-            <div class="section">
-                <textarea id="input-text" rows="5" placeholder="Enter your text here..."></textarea>
-                <div id="input-stats">0 characters, 0 words</div>
-            </div>
-            
-            <label>Keep capitalization for these words (comma-separated)</label>
-            
-            <div class="section">
-                <textarea id="input-text" rows="1" placeholder="Enter your override words..."></textarea>
-                <div id="input-stats">0 words</div>
-            </div>
-    
-            <h2>Common styles</h2>
-            
-            <!-- Title Case -->
-            <div class="style-item">
-                <h3>
-                    <div class="style-title">
-                        Title case
-                    </div>
-                    <button id="copy-ap" data-target="title-case-output">
-                        Copy
-                    </button>
-                </h3>
-                <div id="title-case-output" class="output-box">&nbsp;</div>
-            </div>
-    
-            <!-- Sentence Case -->
-            <div class="style-item">
-                <h3>
-                    <div class="style-title">
-                        Sentence case
-                    </div>
-                    <button id="copy-sentence" data-target="sentence-case-output">
-                        Copy
-                    </button>
-                </h3>
-                <div id="sentence-case-output" class="output-box">&nbsp;</div>
-            </div>
-    
-            <!-- Upper Case -->
-            <div class="style-item">
-                <h3>
-                    <div class="style-title">
-                        Upper case
-                    </div>
-                    <button id="copy-upper" data-target="upper-case-output">
-                        Copy
-                    </button>
-                </h3>
-                <div id="upper-case-output" class="output-box">&nbsp;</div>
-            </div>
-    
-            <!-- Lower Case -->
-            <div class="style-item">
-                <h3>
-                    <div class="style-title">
-                        Lower case
-                    </div>
-                    <button id="copy-lower" data-target="lower-case-output">
-                        Copy
-                    </button>
-                </h3>
-                <div id="lower-case-output" class="output-box">&nbsp;</div>
-            </div>
-            
-            <!-- Citation styles section -->
-            <div>
-                <h2>Citation styles</h2>
-                
-                <!-- AP Style -->
-                <div class="style-item">
-                    <h3>
-                        <div class="style-title">
-                            AP style <span class="style-description">Associated Press</span>
-                        </div>
-                        <button id="copy-ap" data-target="ap-style-output">
-                            Copy
-                        </button>
-                    </h3>
-                    <div id="ap-style-output" class="output-box">&nbsp;</div>
-                </div>
-                
-                <!-- APA Style -->
-                <div class="style-item">
-                    <h3>
-                        <div class="style-title">
-                            APA style <span class="style-description">American Psychological Association</span>
-                        </div>
-                        <button id="copy-apa" data-target="apa-style-output">
-                            Copy
-                        </button>
-                    </h3>
-                    <div id="apa-style-output" class="output-box">&nbsp;</div>
-                </div>
-                
-                <!-- MLA Style -->
-                <div class="style-item">
-                    <h3>
-                        <div class="style-title">
-                            MLA style <span class="style-description">Modern Language Association</span>
-                        </div>
-                        <button id="copy-mla" data-target="mla-style-output">
-                            Copy
-                        </button>
-                    </h3>
-                    <div id="mla-style-output" class="output-box">&nbsp;</div>
-                </div>
-                
-                <!-- Chicago Style -->
-                <div class="style-item">
-                    <h3>
-                        <div class="style-title">
-                            Chicago style <span class="style-description">University of Chicago Press</span>
-                        </div>
-                        <button id="copy-chicago" data-target="chicago-style-output">
-                            Copy
-                        </button>
-                    </h3>
-                    <div id="chicago-style-output" class="output-box">&nbsp;</div>
-                </div>
-            </div>
+      <div class="content" id="scrollContent">
+        <!-- The custom scrollbar will be added via JavaScript -->
+        <h1>Text Case Converter</h1>
+        <label>Enter your text below</label>
+
+        <div class="section">
+          <textarea
+            id="input-text"
+            rows="5"
+            placeholder="Enter your text here..."
+          ></textarea>
+          <div id="input-stats">0 characters, 0 words</div>
         </div>
+
+        <label>Keep capitalization for these words (comma-separated)</label>
+
+        <div class="section">
+          <textarea
+            id="excluded-words"
+            rows="1"
+            placeholder="Enter your override words..."
+          ></textarea>
+          <div id="excluded-words-stats">0 words</div>
+        </div>
+
+        <h2>Common styles</h2>
+
+        <!-- Title Case -->
+        <div class="style-item">
+          <h3>
+            <div class="style-title">Title case</div>
+            <button id="copy-ap" data-target="title-case-output">Copy</button>
+          </h3>
+          <div id="title-case-output" class="output-box">&nbsp;</div>
+        </div>
+
+        <!-- Sentence Case -->
+        <div class="style-item">
+          <h3>
+            <div class="style-title">Sentence case</div>
+            <button id="copy-sentence" data-target="sentence-case-output">
+              Copy
+            </button>
+          </h3>
+          <div id="sentence-case-output" class="output-box">&nbsp;</div>
+        </div>
+
+        <!-- Upper Case -->
+        <div class="style-item">
+          <h3>
+            <div class="style-title">Upper case</div>
+            <button id="copy-upper" data-target="upper-case-output">
+              Copy
+            </button>
+          </h3>
+          <div id="upper-case-output" class="output-box">&nbsp;</div>
+        </div>
+
+        <!-- Lower Case -->
+        <div class="style-item">
+          <h3>
+            <div class="style-title">Lower case</div>
+            <button id="copy-lower" data-target="lower-case-output">
+              Copy
+            </button>
+          </h3>
+          <div id="lower-case-output" class="output-box">&nbsp;</div>
+        </div>
+
+        <!-- Citation styles section -->
+        <div>
+          <h2>Citation styles</h2>
+
+          <!-- AP Style -->
+          <div class="style-item">
+            <h3>
+              <div class="style-title">
+                AP style <span class="style-description">Associated Press</span>
+              </div>
+              <button id="copy-ap" data-target="ap-style-output">Copy</button>
+            </h3>
+            <div id="ap-style-output" class="output-box">&nbsp;</div>
+          </div>
+
+          <!-- APA Style -->
+          <div class="style-item">
+            <h3>
+              <div class="style-title">
+                APA style
+                <span class="style-description"
+                  >American Psychological Association</span
+                >
+              </div>
+              <button id="copy-apa" data-target="apa-style-output">Copy</button>
+            </h3>
+            <div id="apa-style-output" class="output-box">&nbsp;</div>
+          </div>
+
+          <!-- MLA Style -->
+          <div class="style-item">
+            <h3>
+              <div class="style-title">
+                MLA style
+                <span class="style-description"
+                  >Modern Language Association</span
+                >
+              </div>
+              <button id="copy-mla" data-target="mla-style-output">Copy</button>
+            </h3>
+            <div id="mla-style-output" class="output-box">&nbsp;</div>
+          </div>
+
+          <!-- Chicago Style -->
+          <div class="style-item">
+            <h3>
+              <div class="style-title">
+                Chicago style
+                <span class="style-description"
+                  >University of Chicago Press</span
+                >
+              </div>
+              <button id="copy-chicago" data-target="chicago-style-output">
+                Copy
+              </button>
+            </h3>
+            <div id="chicago-style-output" class="output-box">&nbsp;</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Text transformation functionality -->
     <script>
-        // Text transformation functionality
-        const inputText = document.getElementById('input-text');
-        const inputStats = document.getElementById('input-stats');
-        
-        const titleCaseOutput = document.getElementById('title-case-output');
-        const sentenceCaseOutput = document.getElementById('sentence-case-output');
-        const upperCaseOutput = document.getElementById('upper-case-output');
-        const lowerCaseOutput = document.getElementById('lower-case-output');
-        
-        // Citation style outputs
-        const apStyleOutput = document.getElementById('ap-style-output');
-        const apaStyleOutput = document.getElementById('apa-style-output');
-        const mlaStyleOutput = document.getElementById('mla-style-output');
-        const chicagoStyleOutput = document.getElementById('chicago-style-output');
+      // Text transformation functionality
+      const inputText = document.getElementById("input-text");
+      const inputStats = document.getElementById("input-stats");
 
-        // Get all copy buttons
-        const copyButtons = document.querySelectorAll('button[data-target]');
-        
-        // Transform text function
-        function transformText() {
-            const text = inputText.value;
-            
-            // Update stats
-            const charCount = text.length;
-            const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-            inputStats.textContent = `${charCount} characters, ${wordCount} words`;
-            
-            // Apply transformations
-            applyTitleCase(text);
-            applySentenceCase(text);
-            applyUpperCase(text);
-            applyLowerCase(text);
-            
-            // Apply citation styles
-            applyAPStyle(text);
-            applyAPAStyle(text);
-            applyMLAStyle(text);
-            applyChicagoStyle(text);
+      const excludedWordsInput = document.getElementById("excluded-words");
+      const excludedWordsStats = document.getElementById(
+        "excluded-words-stats"
+      );
+
+      const titleCaseOutput = document.getElementById("title-case-output");
+      const sentenceCaseOutput = document.getElementById(
+        "sentence-case-output"
+      );
+      const upperCaseOutput = document.getElementById("upper-case-output");
+      const lowerCaseOutput = document.getElementById("lower-case-output");
+
+      // Citation style outputs
+      const apStyleOutput = document.getElementById("ap-style-output");
+      const apaStyleOutput = document.getElementById("apa-style-output");
+      const mlaStyleOutput = document.getElementById("mla-style-output");
+      const chicagoStyleOutput = document.getElementById(
+        "chicago-style-output"
+      );
+
+      // Get all copy buttons
+      const copyButtons = document.querySelectorAll("button[data-target]");
+
+      // Transform text function
+      function transformText() {
+        const text = inputText.value;
+
+        // Update stats
+        const charCount = text.length;
+        const wordCount =
+          text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+        inputStats.textContent = `${charCount} characters, ${wordCount} words`;
+
+        // Apply transformations
+        applyTitleCase(text);
+        applySentenceCase(text);
+        applyUpperCase(text);
+        applyLowerCase(text);
+
+        // Apply citation styles
+        applyAPStyle(text);
+        applyAPAStyle(text);
+        applyMLAStyle(text);
+        applyChicagoStyle(text);
+      }
+
+      // Title Case
+      function applyTitleCase(text) {
+        if (!text) {
+          titleCaseOutput.textContent = "";
+          return;
         }
-        
-        // Title Case
-        function applyTitleCase(text) {
-            if (!text) {
-                titleCaseOutput.textContent = '';
-                return;
+
+        const excludedWords = parseExcludedWords(excludedWordsInput.value);
+        const words = text.split(/\b/);
+
+        const result = words
+          .map((word) => {
+            if (!word.trim()) return word;
+
+            const wordLower = word.toLowerCase();
+
+            // Check if any excluded word matches case-insensitively
+            const isExcluded = Array.from(excludedWords).some(
+              (excluded) => excluded.toLowerCase() === wordLower
+            );
+
+            if (isExcluded) {
+              return word; // override casing
             }
             
-            const excludedWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet'];
-            const words = text.split(/\b/);
-            
-            const result = words.map((word, index) => {
-                if (!word.trim()) return word;
-                
-                // Always capitalize the first and last word
-                if ((index === 0 || index === words.length - 1) && word.trim()) {
-                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-                }
-                
-                // Check if the word should be excluded from transformation
-                if (excludedWords.includes(word.toLowerCase())) {
-                    return word.toLowerCase();
-                }
-                
-                // For normal words, capitalize the first letter
-                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-            }).join('');
-            
-            titleCaseOutput.textContent = result;
+
+            // For normal words, capitalize the first letter
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          })
+          .join("");
+
+        titleCaseOutput.textContent = result;
+      }
+
+      // Sentence Case
+      function applySentenceCase(text) {
+        if (!text) {
+          sentenceCaseOutput.textContent = "";
+          return;
         }
-        
-        // Sentence Case
-        function applySentenceCase(text) {
-            if (!text) {
-                sentenceCaseOutput.textContent = '';
-                return;
-            }
-            
-            // First, lowercase everything
-            let result = text.toLowerCase();
-            
-            // Then capitalize the first letter of each sentence
-            result = result.replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => {
-                return p1 + p2.toUpperCase();
-            });
-            
-            sentenceCaseOutput.textContent = result;
-        }
-        
-        // Upper Case
-        function applyUpperCase(text) {
-            if (!text) {
-                upperCaseOutput.textContent = '';
-                return;
-            }
-            
-            upperCaseOutput.textContent = text.toUpperCase();
-        }
-        
-        // Lower Case
-        function applyLowerCase(text) {
-            if (!text) {
-                lowerCaseOutput.textContent = '';
-                return;
-            }
-            
-            lowerCaseOutput.textContent = text.toLowerCase();
-        }
-        
-        // AP Style (Associated Press)
-        function applyAPStyle(text) {
-            if (!text) {
-                apStyleOutput.textContent = '';
-                return;
-            }
-            
-            // Basic AP style rules (simplified)
-            let result = text;
-            
-            // Use figures for numbers 10 and above
-            result = result.replace(/\b(\d+)\b/g, (match, number) => {
-                const num = parseInt(number);
-                if (num >= 10) return number;
-                return ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][num] || number;
-            });
-            
-            // Use % symbol instead of "percent"
-            result = result.replace(/\b(\d+)\s+percent\b/gi, '$1%');
-            
-            apStyleOutput.textContent = result;
-        }
-        
-        // APA Style (American Psychological Association)
-        function applyAPAStyle(text) {
-            if (!text) {
-                apaStyleOutput.textContent = '';
-                return;
-            }
-            
-            // Basic APA style rules (simplified)
-            let result = text;
-            
-            // Use "&" for citations
-            result = result.replace(/\band\b/gi, '&');
-            
-            // Capitalize first letter of first word after a colon
-            result = result.replace(/:\s*([a-z])/g, (match, letter) => {
-                return ': ' + letter.toUpperCase();
-            });
-            
-            apaStyleOutput.textContent = result;
-        }
-        
-        // MLA Style (Modern Language Association)
-        function applyMLAStyle(text) {
-            if (!text) {
-                mlaStyleOutput.textContent = '';
-                return;
-            }
-            
-            // Basic MLA style rules (simplified)
-            let result = text;
-            
-            // Spell out numbers that can be written in one or two words
-            result = result.replace(/\b(\d+)\b/g, (match, number) => {
-                const num = parseInt(number);
-                if (num <= 100 || num % 100 === 0) {
-                    const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-                    return words[num] || number;
-                }
-                return number;
-            });
-            
-            mlaStyleOutput.textContent = result;
-        }
-        
-        // Chicago Style (University of Chicago Press)
-        function applyChicagoStyle(text) {
-            if (!text) {
-                chicagoStyleOutput.textContent = '';
-                return;
-            }
-            
-            // Basic Chicago style rules (simplified)
-            let result = text;
-            
-            // Spell out numbers from one through one hundred
-            result = result.replace(/\b(\d+)\b/g, (match, number) => {
-                const num = parseInt(number);
-                if (num <= 100) {
-                    const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-                    return words[num] || number;
-                }
-                return number;
-            });
-            
-            chicagoStyleOutput.textContent = result;
-        }
-        
-        // Copy functionality
-        copyButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const textToCopy = document.getElementById(targetId).textContent;
-                
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    const originalText = this.textContent;
-                    this.textContent = 'Copied!';
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                    }, 2000);
-                });
-            });
+
+        const excludedWords = parseExcludedWords(excludedWordsInput.value);
+
+        // First, lowercase everything
+        let result = text.toLowerCase();
+
+        // Then capitalize the first letter of each sentence
+        result = result.replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => {
+          return p1 + p2.toUpperCase();
         });
-        
-        // Event listeners
-        inputText.addEventListener('input', transformText);
-        
-        // Initial transformation (if there's any default text)
-        transformText();
+
+        // Restore excluded words
+        excludedWords.forEach((word) => {
+          const regex = new RegExp(`\\b${word.toLowerCase()}\\b`, "gi");
+          result = result.replace(regex, word);
+        });
+
+        sentenceCaseOutput.textContent = result;
+      }
+
+      // Upper Case
+      function applyUpperCase(text) {
+        if (!text) {
+          upperCaseOutput.textContent = "";
+          return;
+        }
+
+        const excludedWords = parseExcludedWords(excludedWordsInput.value);
+
+        // Store excluded words with their positions
+        const excludedPositions = [];
+        let tempText = text;
+
+        excludedWords.forEach((word) => {
+          const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, "g");
+          let match;
+          while ((match = regex.exec(tempText)) !== null) {
+            excludedPositions.push({
+              start: match.index,
+              end: match.index + word.length,
+              word: word,
+            });
+          }
+        });
+
+        // Convert to uppercase
+        let result = text.toUpperCase();
+
+        // Restore excluded words (starting from the end to maintain positions)
+        excludedPositions.sort((a, b) => b.start - a.start);
+        excludedPositions.forEach((pos) => {
+          result =
+            result.substring(0, pos.start) +
+            pos.word +
+            result.substring(pos.end);
+        });
+
+        upperCaseOutput.textContent = result;
+      }
+
+      // Lower Case
+      function applyLowerCase(text) {
+        if (!text) {
+          lowerCaseOutput.textContent = "";
+          return;
+        }
+
+        const excludedWords = parseExcludedWords(excludedWordsInput.value);
+
+        // Store excluded words with their positions
+        const excludedPositions = [];
+        let tempText = text;
+
+        excludedWords.forEach((word) => {
+          const regex = new RegExp(`\\b${escapeRegExp(word)}\\b`, "g");
+          let match;
+          while ((match = regex.exec(tempText)) !== null) {
+            excludedPositions.push({
+              start: match.index,
+              end: match.index + word.length,
+              word: word,
+            });
+          }
+        });
+
+        // Convert to lowercase
+        let result = text.toLowerCase();
+
+        // Restore excluded words (starting from the end to maintain positions)
+        excludedPositions.sort((a, b) => b.start - a.start);
+        excludedPositions.forEach((pos) => {
+          result =
+            result.substring(0, pos.start) +
+            pos.word +
+            result.substring(pos.end);
+        });
+
+        lowerCaseOutput.textContent = result;
+      }
+
+      // AP Style (Associated Press)
+      function applyAPStyle(text) {
+        if (!text) {
+          apStyleOutput.textContent = "";
+          return;
+        }
+
+        // Basic AP style rules (simplified)
+        let result = text;
+
+        // Use figures for numbers 10 and above
+        result = result.replace(/\b(\d+)\b/g, (match, number) => {
+          const num = parseInt(number);
+          if (num >= 10) return number;
+          return (
+            [
+              "zero",
+              "one",
+              "two",
+              "three",
+              "four",
+              "five",
+              "six",
+              "seven",
+              "eight",
+              "nine",
+            ][num] || number
+          );
+        });
+
+        // Use % symbol instead of "percent"
+        result = result.replace(/\b(\d+)\s+percent\b/gi, "$1%");
+
+        apStyleOutput.textContent = result;
+      }
+
+      // APA Style (American Psychological Association)
+      function applyAPAStyle(text) {
+        if (!text) {
+          apaStyleOutput.textContent = "";
+          return;
+        }
+
+        // Basic APA style rules (simplified)
+        let result = text;
+
+        // Use "&" for citations
+        result = result.replace(/\band\b/gi, "&");
+
+        // Capitalize first letter of first word after a colon
+        result = result.replace(/:\s*([a-z])/g, (match, letter) => {
+          return ": " + letter.toUpperCase();
+        });
+
+        apaStyleOutput.textContent = result;
+      }
+
+      // MLA Style (Modern Language Association)
+      function applyMLAStyle(text) {
+        if (!text) {
+          mlaStyleOutput.textContent = "";
+          return;
+        }
+
+        // Basic MLA style rules (simplified)
+        let result = text;
+
+        // Spell out numbers that can be written in one or two words
+        result = result.replace(/\b(\d+)\b/g, (match, number) => {
+          const num = parseInt(number);
+          if (num <= 100 || num % 100 === 0) {
+            const words = [
+              "zero",
+              "one",
+              "two",
+              "three",
+              "four",
+              "five",
+              "six",
+              "seven",
+              "eight",
+              "nine",
+              "ten",
+            ];
+            return words[num] || number;
+          }
+          return number;
+        });
+
+        mlaStyleOutput.textContent = result;
+      }
+
+      // Chicago Style (University of Chicago Press)
+      function applyChicagoStyle(text) {
+        if (!text) {
+          chicagoStyleOutput.textContent = "";
+          return;
+        }
+
+        // Basic Chicago style rules (simplified)
+        let result = text;
+
+        // Spell out numbers from one through one hundred
+        result = result.replace(/\b(\d+)\b/g, (match, number) => {
+          const num = parseInt(number);
+          if (num <= 100) {
+            const words = [
+              "zero",
+              "one",
+              "two",
+              "three",
+              "four",
+              "five",
+              "six",
+              "seven",
+              "eight",
+              "nine",
+              "ten",
+            ];
+            return words[num] || number;
+          }
+          return number;
+        });
+
+        chicagoStyleOutput.textContent = result;
+      }
+
+      // Parse excluded words into a Set for faster lookups
+      function parseExcludedWords(excludesText) {
+        if (!excludesText.trim()) return new Set();
+
+        return new Set(
+          excludesText
+            .split(",")
+            .map((word) => word.trim())
+            .filter((word) => word !== "")
+        );
+      }
+
+      // Escape special characters in strings for regex
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      // Copy functionality
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          const textToCopy = document.getElementById(targetId).textContent;
+
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = this.textContent;
+            this.textContent = "Copied!";
+            setTimeout(() => {
+              this.textContent = originalText;
+            }, 2000);
+          });
+        });
+      });
+
+      // Event listeners
+      inputText.addEventListener("input", transformText);
+      excludedWordsInput.addEventListener("input", transformText);
+
+      // Initial transformation (if there's any default text)
+      transformText();
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tooltip = document.getElementById('tooltip');
-            const iconNavItems = document.querySelectorAll('.custom-nav li img');
+      document.addEventListener("DOMContentLoaded", function () {
+        const tooltip = document.getElementById("tooltip");
+        const iconNavItems = document.querySelectorAll(".custom-nav li img");
 
-            // Function to show tooltip
-            function showTooltip(e) {
-                const tooltipText = this.getAttribute('data-tooltip');
-                if (tooltipText) {
-                    tooltip.textContent = tooltipText;
-                    tooltip.style.opacity = '1';
-                    updateTooltipPosition(e, tooltip);
-                }
-            }
+        // Function to show tooltip
+        function showTooltip(e) {
+          const tooltipText = this.getAttribute("data-tooltip");
+          if (tooltipText) {
+            tooltip.textContent = tooltipText;
+            tooltip.style.opacity = "1";
+            updateTooltipPosition(e, tooltip);
+          }
+        }
 
-            // Function to hide tooltip
-            function hideTooltip() {
-                tooltip.style.opacity = '0';
-            }
+        // Function to hide tooltip
+        function hideTooltip() {
+          tooltip.style.opacity = "0";
+        }
 
-            // Function to update tooltip position
-            function updateTooltipPosition(e, tooltipElement) {
-                const x = e.clientX;
-                const y = e.clientY;
-                tooltipElement.style.left = x + 'px';
-                tooltipElement.style.top = y + 'px';
-            }
+        // Function to update tooltip position
+        function updateTooltipPosition(e, tooltipElement) {
+          const x = e.clientX;
+          const y = e.clientY;
+          tooltipElement.style.left = x + "px";
+          tooltipElement.style.top = y + "px";
+        }
 
-            // Add event listeners to each icon
-            iconNavItems.forEach(item => {
-                item.addEventListener('mouseenter', showTooltip);
-                item.addEventListener('mouseleave', hideTooltip);
-                item.addEventListener('mousemove', (e) => updateTooltipPosition(e, tooltip));
-            });
+        // Add event listeners to each icon
+        iconNavItems.forEach((item) => {
+          item.addEventListener("mouseenter", showTooltip);
+          item.addEventListener("mouseleave", hideTooltip);
+          item.addEventListener("mousemove", (e) =>
+            updateTooltipPosition(e, tooltip)
+          );
         });
+      });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const tooltipdonation = document.getElementById('tooltipdonation');
-            const donationNavItems = document.querySelectorAll('.donation-nav li img');
+      document.addEventListener("DOMContentLoaded", function () {
+        const tooltipdonation = document.getElementById("tooltipdonation");
+        const donationNavItems = document.querySelectorAll(
+          ".donation-nav li img"
+        );
 
-            // Function to show tooltip
-            function showTooltip(e) {
-                const tooltipText = this.getAttribute('data-tooltip');
-                if (tooltipText) {
-                    tooltipdonation.textContent = tooltipText;
-                    tooltipdonation.style.opacity = '1';
-                    updateTooltipPosition(e, tooltipdonation);
-                }
-            }
+        // Function to show tooltip
+        function showTooltip(e) {
+          const tooltipText = this.getAttribute("data-tooltip");
+          if (tooltipText) {
+            tooltipdonation.textContent = tooltipText;
+            tooltipdonation.style.opacity = "1";
+            updateTooltipPosition(e, tooltipdonation);
+          }
+        }
 
-            // Function to hide tooltip
-            function hideTooltip() {
-                tooltipdonation.style.opacity = '0';
-            }
+        // Function to hide tooltip
+        function hideTooltip() {
+          tooltipdonation.style.opacity = "0";
+        }
 
-            // Function to update tooltip position
-            function updateTooltipPosition(e, tooltipElement) {
-                const x = e.clientX;
-                const y = e.clientY;
-                const tooltipWidth = tooltipElement.offsetWidth;
-                tooltipElement.style.left = (x - tooltipWidth - 32) + 'px'; // Position adjustment for tooltipdonation
-                tooltipElement.style.top = y + 'px';
-            }
+        // Function to update tooltip position
+        function updateTooltipPosition(e, tooltipElement) {
+          const x = e.clientX;
+          const y = e.clientY;
+          const tooltipWidth = tooltipElement.offsetWidth;
+          tooltipElement.style.left = x - tooltipWidth - 32 + "px"; // Position adjustment for tooltipdonation
+          tooltipElement.style.top = y + "px";
+        }
 
-            // Add event listeners to each icon
-            donationNavItems.forEach(item => {
-                item.addEventListener('mouseenter', showTooltip);
-                item.addEventListener('mouseleave', hideTooltip);
-                item.addEventListener('mousemove', (e) => updateTooltipPosition(e, tooltipdonation));
-            });
+        // Add event listeners to each icon
+        donationNavItems.forEach((item) => {
+          item.addEventListener("mouseenter", showTooltip);
+          item.addEventListener("mouseleave", hideTooltip);
+          item.addEventListener("mousemove", (e) =>
+            updateTooltipPosition(e, tooltipdonation)
+          );
         });
+      });
     </script>
-</body>
+  </body>
 </html>
