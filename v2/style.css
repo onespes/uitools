@@ -180,7 +180,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   h2 {
     color: #a1a2a3;
     font-size: 32px;
-    margin: 56px 0 32px;
+    margin: 32px 0 32px;
     font-weight: 400;
     display: flex;
     justify-content: space-between;
