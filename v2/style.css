@@ -8,7 +8,6 @@
   html, body {
     height: 100%;
     margin: 0;
-    background-color: #000;
 }
 
 html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
@@ -111,7 +110,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   .container {
     background-color: #1f1f1f;
     width: 100%;
-    height: calc(100% - 240px);
+    height: calc(100% - 120px);
     border-radius: 2px;
     overflow: hidden;
     display: flex;
@@ -174,6 +173,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   font-size: 40px;
   font-weight: 700;
   margin-top: 12px;
+  margin-bottom: 36px;
 }
 
 
@@ -206,7 +206,7 @@ html, body, textarea, input {font-family: "Hanken Grotesk", sans-serif;
   input[type="text"] {
     font-family: "Hanken Grotesk", sans-serif;
     font-optical-sizing: auto;
-    width: calc(100% - 24px);
+    width: 100%;
     padding: 12px;
     margin-bottom: 12px;
     background-color: #171819;
@@ -310,7 +310,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     width: calc(100% - 120px);
 
   }
-    .container {height: calc(100% - 240px);
+    .container {height: calc(100% - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
