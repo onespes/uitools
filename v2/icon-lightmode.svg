@@ -1,0 +1,14 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_224_420" fill="white">
+<path d="M18 9C22.9706 9 27 13.0294 27 18C27 22.9706 22.9706 27 18 27C13.0294 27 9 22.9706 9 18C9 13.0294 13.0294 9 18 9Z"/>
+</mask>
+<path d="M18 9V11C21.866 11 25 14.134 25 18H27H29C29 11.9249 24.0751 7 18 7V9ZM27 18H25C25 21.866 21.866 25 18 25V27V29C24.0751 29 29 24.0751 29 18H27ZM18 27V25C14.134 25 11 21.866 11 18H9H7C7 24.0751 11.9249 29 18 29V27ZM9 18H11C11 14.134 14.134 11 18 11V9V7C11.9249 7 7 11.9249 7 18H9Z" fill="#2E4256" mask="url(#path-1-inside-1_224_420)"/>
+<rect x="17" y="3" width="2" height="4" rx="1" fill="#2E4256"/>
+<rect x="17" y="29" width="2" height="4" rx="1" fill="#2E4256"/>
+<rect x="6.68652" y="8.10059" width="2" height="4" rx="1" transform="rotate(-45 6.68652 8.10059)" fill="#2E4256"/>
+<rect x="25.0713" y="26.4854" width="2" height="4" rx="1" transform="rotate(-45 25.0713 26.4854)" fill="#2E4256"/>
+<rect x="3.00049" y="19" width="2" height="4" rx="1" transform="rotate(-90 3.00049 19)" fill="#2E4256"/>
+<rect x="29.0005" y="19" width="2" height="4" rx="1" transform="rotate(-90 29.0005 19)" fill="#2E4256"/>
+<rect x="8.10107" y="29.3135" width="2" height="4" rx="1" transform="rotate(-135 8.10107 29.3135)" fill="#2E4256"/>
+<rect x="26.4858" y="10.9287" width="2" height="4" rx="1" transform="rotate(-135 26.4858 10.9287)" fill="#2E4256"/>
+</svg>
